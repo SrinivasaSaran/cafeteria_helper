@@ -1,3 +1,7 @@
+body {
+  background-color: blanchedalmond;
+}
+
 .header {
   padding: 20px;
   border-bottom: 2px solid rgb(87, 90, 90);

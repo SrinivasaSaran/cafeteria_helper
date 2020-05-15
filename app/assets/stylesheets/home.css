@@ -1,0 +1,41 @@
+.home-page {
+  margin: 170px 100px;
+}
+
+.header-buttons {
+  display: flex;
+  justify-content: right;
+}
+
+.button {
+  border: 1px solid salmon;
+  background-color: salmon;
+  padding: 7px 15px;
+  border-radius: 5px;
+  color: white;
+  margin-left: 15px;
+}
+
+.signing-field-label {
+  font-size: 20px;
+}
+
+.signing-inputbar {
+  margin: 7px auto;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.signing-button {
+  border: 1px solid cornflowerblue;
+  padding: 7px 15px;
+  border-radius: 5px;
+  color: white;
+  background-color: cornflowerblue;
+}
+
+.alternate-signing-field {
+  margin-top: 40px;
+  font-size: 18px;
+}
