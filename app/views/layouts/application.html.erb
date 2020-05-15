@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CafeteriaHelper</title>
+    <title>Cafeteria</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,36 @@
   </head>
 
   <body>
+
+    <header class="header">
+      <h1 class="header-title"> Cool Cafeteria </h1>
+      <%= yield :header_options %>
+    </header>
+
     <%= yield %>
+
+    <footer class="footer">
+
+      <div class="footer-rights-section">
+        <h2 class="rights-copyright"> (c) Grape Inc.</h2>
+        <p class="rights-allrights">All Rights Reserved</p>
+      </div>
+
+      <address class="footer-contact-section">
+
+        <div>
+          <p class="contact-content">For any Complaints and Feedback, </p>
+          <p class="contact-info">e-mail: coolcafeteria@cafe.in</p>
+        </div>
+
+        <div>
+          <p class="contact-content">For Immediate Assistance,</p>
+          <p class="contact-info">Call: 9876543210, 9012345678</p>
+        </div>
+
+      </address>
+
+    </footer>
+
   </body>
 </html>
