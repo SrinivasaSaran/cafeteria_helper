@@ -1,0 +1,23 @@
+.menu-title {
+  text-align: center;
+  font-size: 30px;
+  padding: 15px;
+  margin: 30px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto;
+  margin: 30px;
+}
+
+.grid-item {
+  font-size: 30px;
+  text-align: center;
+  padding: 50px 10px;
+  background-color: rgb(220, 217, 20);
+  color: white;
+  margin: auto 30px;
+  margin-bottom: 60px;
+  text-decoration: underline rgb(220, 217, 20);
+}
