@@ -1,0 +1,28 @@
+<article>
+
+  <section>
+    <h1 class="menuitems-title"><%=@menu.name%> Menu</h1>
+  </section>
+
+  <section class="menuitems-grid-container">
+
+    <div class="menuitem-cart">
+      <h2 class="menuitem-name">Cart</h2>
+    </div>
+    <% @menu.menu_items.each { |menu_item| %>
+      <div class="menuitems-grid-item">
+        <p class="menuitem-name"><%= menu_item.name %></p>
+        <p class="menuitem-description"><%= menu_item.description %></p>
+        <div class="menuitem-price">
+          <p>Rs.<%= menu_item.price %></p>
+          <p>Quantity:  <%= number_field_tag "quantity", 1, in: 1..7, class: "menuitem-quantity" %></p>
+        </div>
+        <p class="menuitem-button">
+           <%= submit_tag "Add to Cart", class:"menuitem-addbutton", data: {disable_with: "Adding.."} %>
+        </p>
+      </div>
+    <% } %>
+
+  </section>
+
+</article>

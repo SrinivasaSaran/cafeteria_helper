@@ -2,7 +2,7 @@
   <h2 class="menu-title">Menus</h2>
   <section class="grid-container">
     <% Menu.active.each{ |menu| %>
-      <a href="/menus/<%=menu.id%>%", class="grid-item" ><%= menu.name %></a>
+      <a href="/menus/<%=menu.id%>", class="grid-item" ><%= menu.name %></a>
     <%}%>
   </section>
 </article>
