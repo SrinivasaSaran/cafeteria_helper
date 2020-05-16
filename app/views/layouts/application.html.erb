@@ -14,6 +14,16 @@
     <header class="header">
       <h1 class="header-title"> Cool Cafeteria </h1>
       <%= yield :header_options %>
+      <%if @current_user%>
+        <%= form_with(url: signout_path, method: "delete", class: "additional-header-content") do %>
+          <p class="header-username">
+             <%= @current_user.name if @current_user.role=="customer"%>
+             <%= "Worker: #{@current_user.name}" if @current_user.role=="clerk"%>
+             <%= "Owner: #{@current_user.name}" if @current_user.role=="admin"%>
+          </p>
+          <%= submit_tag "Sign Out", data: {disable_with: "Pleasure Serving You...!"}, class: "header-button" %>
+        <%end%>
+      <%end%>
     </header>
 
     <%= yield %>

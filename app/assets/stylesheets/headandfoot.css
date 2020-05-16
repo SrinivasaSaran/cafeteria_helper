@@ -15,6 +15,27 @@ body {
   line-height: 2;
 }
 
+.additional-header-content {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.header-button {
+  border: 1px solid salmon;
+  background-color: salmon;
+  padding: 7px 15px;
+  border-radius: 5px;
+  color: white;
+  margin-left: 15px;
+}
+
+.header-username {
+  font-weight: bold;
+  font-size: 22px;
+  color: rgb(37, 39, 39);
+}
+
 .footer {
   border-top: 2px solid;
   padding: 20px;

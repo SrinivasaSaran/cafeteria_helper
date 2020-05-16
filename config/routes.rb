@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get "/", to: "home#index", as: :root
   post "/", to: "home#authorize", as: :signin
+  get "/info", to: "home#info", as: :info
+  delete "/signout", to: "home#destroy", as: :signout
   resources :users
   resources :menus
 end

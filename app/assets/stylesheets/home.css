@@ -13,20 +13,6 @@
   color: darkslateblue;
 }
 
-.additional-header-content {
-  display: flex;
-  justify-content: right;
-}
-
-.header-button {
-  border: 1px solid salmon;
-  background-color: salmon;
-  padding: 7px 15px;
-  border-radius: 5px;
-  color: white;
-  margin-left: 15px;
-}
-
 .signing-field-label {
   font-size: 20px;
 }

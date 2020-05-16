@@ -16,8 +16,10 @@ class UsersController < ApplicationController
                          address: params[:address],
                          phone_no: params[:phone_no])
       if user.valid?
+        order = Order.create!()
         session[:current_user_id] = user.id
-        redirect_to menus_path
+        session[:current_order_id] = order.id
+        redirect_to root_path
       else
         flash[:error] = user.errors.full_messages.join(". ")
         redirect_to new_user_path
