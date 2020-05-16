@@ -25,7 +25,10 @@ class HomeController < ApplicationController
   end
 
   def destroy
-    Order.find(session[:current_order_id]).destroy if Order.find(session[:current_order_id]).order_items.empty?
+    if !Order.find(session[:current_order_id]).placed_at
+      Order.find(session[:current_order_id]).order_items.destroy_all
+      Order.find(session[:current_order_id]).destroy
+    end
     reset_session
     @current_user = nil
     redirect_to root_path

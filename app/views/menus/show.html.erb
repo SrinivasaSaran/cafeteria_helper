@@ -7,7 +7,12 @@
   <section class="menuitems-grid-container">
 
     <div class="menuitem-cart">
-      <h2 class="menuitem-name">Cart</h2>
+      <h2 class="cart-title">Cart</h2>
+      <p class="cart-item">S.No</p>
+      <p class="cart-item">Item Name</p>
+      <p class="cart-item">Item price</p>
+      <p class="cart-item">Quantity</p>
+      <p class="cart-item">Price</p>
     </div>
     <% @menu.menu_items.each { |menu_item| %>
       <%= form_with(url: cart_path, method: "post", class: "menuitems-grid-item") do %>
