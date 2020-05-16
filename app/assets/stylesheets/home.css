@@ -2,12 +2,23 @@
   margin: 170px 100px;
 }
 
-.header-buttons {
+.signup-page {
+  margin: 100px 0px;
+  margin-left: 100px;
+}
+
+.signing-page-heading {
+  font-size: 30px;
+  margin-bottom: 40px;
+  color: darkslateblue;
+}
+
+.additional-header-content {
   display: flex;
   justify-content: right;
 }
 
-.button {
+.header-button {
   border: 1px solid salmon;
   background-color: salmon;
   padding: 7px 15px;
@@ -24,7 +35,8 @@
   margin: 7px auto;
   border: 1px solid;
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 8px 15px;
+  margin-bottom: 20px;
 }
 
 .signing-button {
@@ -38,4 +50,10 @@
 .alternate-signing-field {
   margin-top: 40px;
   font-size: 18px;
+}
+
+.flash-error {
+  font-size: 18px;
+  color: red;
+  margin-bottom: 30px;
 }

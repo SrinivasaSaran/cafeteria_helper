@@ -2,16 +2,19 @@
 
   <% content_for :header_options do %>
 
-    <section class="header-buttons">
+    <section class="additional-header-content">
+      <a href="/menus" >
+        <%= submit_tag "Today's Menu", class: "header-button" %>
+      </a>
       <a href="https://todo-on-web.herokuapp.com" >
-        <%= submit_tag "About Us", class: "button" %>
+        <%= submit_tag "About Us", class: "header-button" %>
       </a>
     </section>
 
   <% end %>
 
   <%= form_with(class:"signing-section") do %>
-    <label class="signing-field-label" for="email">E-mail: </label><br>
+    <%= label_tag :email, "E-mail:", class:"signing-field-label"%><br>
     <%= text_field_tag "email",
                        nil,
                        placeholder: "Your Registered email Id",
@@ -19,7 +22,7 @@
                        title: "Expected Pattern: yyy@yyy.yy",
                        class: "signing-inputbar"
     %><br><br>
-    <label class="signing-field-label" for="password_digest" >Password: </label><br>
+    <%= label_tag :password_digest, "Password:", class:"signing-field-label"%><br>
     <%= password_field_tag :password_digest,
                            nil,
                            placeholder: "Your Password",
@@ -27,8 +30,9 @@
                            title: "6 to 12 characters",
                            class: "signing-inputbar"
     %><br><br>
+    <p class="flash-error"><%= flash[:error] %></p>
     <%= submit_tag "SIGN IN", data: {disable_with: "Checking...."}, class: "signing-button" %>
   <% end %>
-  <p class="alternate-signing-field">New user..? --> <%= link_to "Sign Up!" %>
+  <p class="alternate-signing-field">New User..? --> <%= link_to "Sign Up!", new_user_path %>
 
 </article>

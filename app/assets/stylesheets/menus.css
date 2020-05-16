@@ -76,6 +76,7 @@
 }
 
 .menuitem-addbutton {
+  font-size: 14px;
   color: white;
   border: 1px solid rgb(155, 148, 155);
   background-color: rgb(155, 148, 155);
@@ -83,9 +84,11 @@
   margin: 0px 30px;
   margin-top: 10px;
   border-radius: 5px;
+  text-decoration: underline rgb(155, 148, 155);
 }
 
 .menuitem-addbutton:hover {
   border: 1px solid rgb(218, 12, 218);
   background-color: rgb(218, 12, 218);
+  text-decoration: underline rgb(218, 12, 218);
 }

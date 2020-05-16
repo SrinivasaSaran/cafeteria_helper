@@ -18,7 +18,7 @@
           <p>Quantity:  <%= number_field_tag "quantity", 1, in: 1..7, class: "menuitem-quantity" %></p>
         </div>
         <p class="menuitem-button">
-           <%= submit_tag "Add to Cart", class:"menuitem-addbutton", data: {disable_with: "Adding.."} %>
+           <%= link_to "Add to Cart", "", method: "get", class:"menuitem-addbutton" %>
         </p>
       </div>
     <% } %>
