@@ -10,17 +10,20 @@
       <h2 class="menuitem-name">Cart</h2>
     </div>
     <% @menu.menu_items.each { |menu_item| %>
-      <div class="menuitems-grid-item">
+      <%= form_with(url: cart_path, method: "post", class: "menuitems-grid-item") do %>
+        <%= hidden_field_tag :menu_item_id, menu_item.id %>
         <p class="menuitem-name"><%= menu_item.name %></p>
+        <%= hidden_field_tag :menu_item_name, menu_item.name %>
         <p class="menuitem-description"><%= menu_item.description %></p>
-        <div class="menuitem-price">
+        <span class="menuitem-price">
           <p>Rs.<%= menu_item.price %></p>
           <p>Quantity:  <%= number_field_tag "quantity", 1, in: 1..7, class: "menuitem-quantity" %></p>
-        </div>
+        </span>
+        <%= hidden_field_tag :menu_item_price, menu_item.price %>
         <p class="menuitem-button">
-           <%= link_to "Add to Cart", "", method: "get", class:"menuitem-addbutton" %>
+          <%= submit_tag "Add to Cart", data: {disable_with: "Adding..."}, class:"menuitem-addbutton" %>
         </p>
-      </div>
+      <%end%>
     <% } %>
 
   </section>

@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   delete "/signout", to: "home#destroy", as: :signout
   resources :users
   resources :menus
+  post "/menus/cart", to: "menus#cart", as: :cart
 end
