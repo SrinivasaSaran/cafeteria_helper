@@ -3,9 +3,6 @@
   <% content_for :header_options do %>
 
     <section class="additional-header-content">
-      <a href="/menus" >
-        <%= submit_tag "Today's Menu", class: "header-button" %>
-      </a>
       <a href="https://todo-on-web.herokuapp.com" >
         <%= submit_tag "About Us", class: "header-button" %>
       </a>
@@ -13,7 +10,7 @@
 
   <% end %>
 
-  <%= form_with(class:"signing-section") do %>
+  <%= form_with(url: signin_path, method: "post", class:"signing-section") do %>
     <%= label_tag :email, "E-mail:", class:"signing-field-label"%><br>
     <%= text_field_tag "email",
                        nil,

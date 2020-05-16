@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :ensure_user_logged_in
+
   def index
   end
 
@@ -17,7 +19,7 @@ class UsersController < ApplicationController
         session[:current_user_id] = user.id
         redirect_to menus_path
       else
-        flash[:invalid] = user.errors.full_messages.join(". ")
+        flash[:error] = user.errors.full_messages.join(". ")
         redirect_to new_user_path
       end
     end
