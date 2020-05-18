@@ -30,6 +30,15 @@ body {
   margin-left: 15px;
 }
 
+.header-signout-button {
+  border: 1px solid rgb(228, 43, 43);
+  background-color: rgb(228, 43, 43);
+  padding: 7px 15px;
+  border-radius: 5px;
+  color: white;
+  margin-left: 15px;
+}
+
 .header-username {
   font-weight: bold;
   font-size: 22px;
@@ -71,4 +80,10 @@ body {
 .contact-info {
   padding: 5px;
   margin-left: 50px;
+}
+
+.about-me {
+  margin: 300px 50px;
+  font-size: 80px;
+  text-align: center;
 }

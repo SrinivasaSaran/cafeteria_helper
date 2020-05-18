@@ -1,8 +1,19 @@
 <article>
+
+  <% content_for :signed_in_header do %>
+    <a href="/orders/pending" >
+      <%= submit_tag "Pending Orders", class: "header-button" %>
+    </a>
+    <a href="/orders" >
+      <%= submit_tag "All Orders", class: "header-button" %>
+    </a>
+  <%end%>
+
   <h2 class="menu-title">Menus</h2>
   <section class="menus-grid-container">
     <% Menu.active.each{ |menu| %>
       <a href="/menus/<%=menu.id%>", class="menus-grid-item" ><%= menu.name %></a>
     <%}%>
   </section>
+
 </article>

@@ -22,7 +22,7 @@
              <%= "Owner: #{@current_user.name}" if @current_user.role=="admin"%>
           </p>
           <%= yield :signed_in_header %>
-          <%= submit_tag "Sign Out", data: {disable_with: "Pleasure Serving You...!"}, class: "header-button" %>
+          <%= submit_tag "Sign Out", data: {disable_with: "Pleasure Serving You...!"}, class: "header-signout-button" %>
         <%end%>
       <%end%>
     </header>

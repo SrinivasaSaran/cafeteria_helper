@@ -4,6 +4,12 @@
     <a href="/menus" >
       <%= submit_tag "Menus", class: "header-button" %>
     </a>
+    <a href="/orders/pending" >
+      <%= submit_tag "Pending Orders", class: "header-button" %>
+    </a>
+    <a href="/orders" >
+      <%= submit_tag "All Orders", class: "header-button" %>
+    </a>
   <%end%>
 
   <h1 class="menuitems-title"><%=@menu.name%> Menu</h1>
@@ -14,12 +20,14 @@
     <div class="menuitem-cart">
 
       <h2 class="cart-title"> Your Food Cart</h2>
-      <p class="cart-table-heading">S.No</p>
-      <p class="cart-table-heading">Item Name</p>
-      <p class="cart-table-heading">Item price</p>
-      <p class="cart-table-heading">Quantity</p>
-      <p class="cart-table-heading">Price</p>
-      <p class="cart-table-heading">  </p>
+      <% if !Order.find(@order_id).order_items.empty? %>
+        <p class="cart-table-heading">S.No</p>
+        <p class="cart-table-heading">Item Name</p>
+        <p class="cart-table-heading">Item price</p>
+        <p class="cart-table-heading">Quantity</p>
+        <p class="cart-table-heading">Price</p>
+        <p class="cart-table-heading">  </p>
+      <%end%>
 
       <%serial_no=0%>
       <%total_quantity=0%>
