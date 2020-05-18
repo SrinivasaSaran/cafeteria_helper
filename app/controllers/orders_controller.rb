@@ -1,4 +1,13 @@
 class OrdersController < ApplicationController
+  def create
+    User.find(session[:current_user_id]).
+      orders.find(session[:current_order_id]).update!(
+      total_amount: params[:total_amount],
+      placed_at: DateTime.now,
+    )
+    redirect_to "/"
+  end
+
   def cart
     if item = OrderItem.exist?(session[:current_order_id], params[:menu_item_id])
       updated_quantity = item.quantity + params[:quantity].to_i
