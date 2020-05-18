@@ -18,13 +18,13 @@
   text-decoration: underline;
 }
 
-.grid-container {
+.menus-grid-container {
   display: grid;
   grid-template-columns: auto;
   margin: 30px;
 }
 
-.grid-item {
+.menus-grid-item {
   font-size: 30px;
   text-align: center;
   padding: 50px 10px;

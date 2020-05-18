@@ -1,0 +1,43 @@
+<section class="orders-grid-container">
+
+  <%orders.each { |your_order| %>
+    <div class="individual-invoice">
+
+      <h2 class="invoice-title">Order Id: <%= your_order.id %></h2>
+      <p class="invoice-table-heading">S.No</p>
+      <p class="invoice-table-heading">Item Name</p>
+      <p class="invoice-table-heading">Item price</p>
+      <p class="invoice-table-heading">Quantity</p>
+      <p class="invoice-table-heading">Price</p>
+
+      <%serial_no=0%>
+      <%total_quantity=0%>
+      <%total_price=0%>
+
+      <%your_order.order_items.each { |order_item|%>
+        <p class="order-item"><%=serial_no+=1%></p>
+        <p class="order-item-name"><%=order_item.menu_item_name%></p>
+        <p class="order-item">Rs.<%=order_item.menu_item_price%></p>
+        <p class="order-item"><%=order_item.quantity%></p>
+        <p class="order-item">Rs.<%=order_item.price%></p>
+          <%total_quantity += order_item.quantity%>
+          <%total_price += order_item.price%>
+      <%}%>
+
+      <p class="invoice-total-label">Total:</p>
+      <p class="invoice-total-value"><%=total_quantity%></p>
+      <p class="invoice-total-value">Rs.<%=total_price%></p>
+
+      <p class="ordered-time"> Ordered at: <%= your_order.placed_at.to_s(:short) %></p>
+      <% if your_order.delivered_at==nil %>
+        <p class="now-time">Time Now: <%=DateTime.now.to_s(:long)%></p>
+        <%= submit_tag "Pending Delivery",disabled: true, class: "invoice-pendingbutton" %>
+      <% else %>
+        <p class="now-time">Delivered at: <%=your_order.delivered_at.to_s(:long)%></p>
+        <%= submit_tag "Order Delivered",disabled: true, class: "invoice-successbutton" %>
+      <% end %>
+
+    </div>
+  <%}%>
+
+</section>

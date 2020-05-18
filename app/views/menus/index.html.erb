@@ -1,8 +1,8 @@
 <article>
   <h2 class="menu-title">Menus</h2>
-  <section class="grid-container">
+  <section class="menus-grid-container">
     <% Menu.active.each{ |menu| %>
-      <a href="/menus/<%=menu.id%>", class="grid-item" ><%= menu.name %></a>
+      <a href="/menus/<%=menu.id%>", class="menus-grid-item" ><%= menu.name %></a>
     <%}%>
   </section>
 </article>

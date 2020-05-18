@@ -1,0 +1,19 @@
+<article>
+
+  <% content_for :signed_in_header do %>
+    <a href="/menus" >
+      <%= submit_tag "Menus", class: "header-button" %>
+    </a>
+    <a href="/orders" >
+      <%= submit_tag "All Orders", class: "header-button" %>
+    </a>
+  <%end%>
+
+  <h1 class="orders-title">Pending Orders</h1>
+
+  <%= render partial: "generate-invoice",
+             locals: {
+               orders: @pending_orders.where(delivered_at: nil)
+             } %>
+
+</article>

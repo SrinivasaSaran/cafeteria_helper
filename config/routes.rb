@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post "/", to: "home#authorize", as: :signin
   get "/info", to: "home#info", as: :info
   delete "/signout", to: "home#destroy", as: :signout
+  get "/orders/pending", to: "orders#pending", as: :pending_orders
   resources :users
   resources :menus
   resources :orders

@@ -6,10 +6,7 @@
     </a>
   <%end%>
 
-  <section>
-    <h1 class="menuitems-title"><%=@menu.name%> Menu</h1>
-  </section>
-
+  <h1 class="menuitems-title"><%=@menu.name%> Menu</h1>
   <p class="flash-error-itemquantity"><%= flash[:error] %></p>
 
   <section class="menuitems-grid-container">
@@ -28,7 +25,7 @@
       <%total_quantity=0%>
       <%total_price=0%>
 
-      <%Order.find(@order_id).order_items.each { |order_item|%>
+      <%Order.find(@order_id).order_items.order(:id).each { |order_item|%>
         <p class="cart-orderitem"><%=serial_no+=1%></p>
         <p class="cart-orderitem-name"><%=order_item.menu_item_name%></p>
         <p class="cart-orderitem">Rs.<%=order_item.menu_item_price%></p>

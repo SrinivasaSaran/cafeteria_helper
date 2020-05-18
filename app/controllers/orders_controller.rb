@@ -1,15 +1,25 @@
 class OrdersController < ApplicationController
+  def index
+    @pending_orders = User.find(session[:current_user_id]).orders.where("placed_at <= ?", DateTime.now)
+  end
+
+  def pending
+    @pending_orders = User.find(session[:current_user_id]).orders.where("placed_at <= ?", DateTime.now)
+  end
+
   def create
     User.find(session[:current_user_id]).
       orders.find(session[:current_order_id]).update!(
       total_amount: params[:total_amount],
       placed_at: DateTime.now,
     )
-    redirect_to "/"
+    order = Order.create!(user_id: session[:current_user_id])
+    session[:current_order_id] = order.id
+    redirect_to pending_orders_path
   end
 
   def cart
-    if item = OrderItem.exist?(session[:current_order_id], params[:menu_item_id])
+    if item = OrderItem.exist?(session[:current_user_id], session[:current_order_id], params[:menu_item_id])
       updated_quantity = item.quantity + params[:quantity].to_i
       if updated_quantity > 7
         flash[:error] = "You can add only 7 quantity per item..!"
@@ -34,7 +44,9 @@ class OrdersController < ApplicationController
   end
 
   def remove_from_cart
-    Order.find(session[:current_order_id]).order_items.find(params[:order_item_id]).destroy
+    User.find(session[:current_user_id]).
+      orders.find(session[:current_order_id]).
+      order_items.find(params[:order_item_id]).destroy
     redirect_to "/menus/#{params[:menu_id]}"
   end
 end
