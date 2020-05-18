@@ -37,7 +37,7 @@
 
 .menuitems-grid-container {
   display: grid;
-  grid-template-columns: auto auto 610px;
+  grid-template-columns: auto auto 630px;
   margin: 30px;
 }
 
@@ -47,7 +47,7 @@
   padding: 25px 15px;
   background-color: white;
   display: grid;
-  grid-template-columns: 50px 200px 100px 100px 100px 20px;
+  grid-template-columns: 50px 200px 100px 100px 120px 20px;
   align-content: flex-start;
 }
 
@@ -77,6 +77,17 @@
 .cart-removeicon {
   padding-top: 10px;
   padding-left: 10px;
+}
+
+.cart-total-label {
+  font-size: 18px;
+  grid-column: 1/4;
+  margin-top: 30px;
+}
+
+.cart-total-value {
+  font-size: 18px;
+  margin-top: 30px;
 }
 
 .menuitems-grid-item {

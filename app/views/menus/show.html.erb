@@ -23,13 +23,19 @@
       <p class="cart-table-heading">Price</p>
       <p class="cart-table-heading">  </p>
       <%serial_no=0%>
+      <%total_quantity=0%>
+      <%total_price=0%>
       <%Order.find(@order_id).order_items.each { |order_item|%>
         <p class="cart-orderitem"><%=serial_no+=1%></p>
         <p class="cart-orderitem-name"><%=order_item.menu_item_name%></p>
         <p class="cart-orderitem">Rs.<%=order_item.menu_item_price%></p>
         <p class="cart-orderitem"><%=order_item.quantity%></p>
         <p class="cart-orderitem">Rs.<%=order_item.price%></p>
-        <%= form_with(url: "/",method: "delete", class: "cart-orderitem-detail") do %>
+        <%total_quantity += order_item.quantity%>
+        <%total_price += order_item.price%>
+        <%= form_with(url: remove_cart_item_path, method: "delete", class: "cart-orderitem-detail") do %>
+          <%=hidden_field_tag :order_item_id, order_item.id%>
+          <%= hidden_field_tag :menu_id, @menu.id %>
           <%= image_submit_tag(
                     "minus-circle.png",
                     alt:"-",
@@ -38,6 +44,11 @@
                     class:"cart-removeicon") %>
         <%end%>
       <%}%>
+      <%if total_price>0 and total_quantity>0%>
+        <p class="cart-total-label">Total:</p>
+        <p class="cart-total-value"><%=total_quantity%></p>
+        <p class="cart-total-value">Rs.<%=total_price%></p>
+      <%end%>
     </div>
     <% @menu.menu_items.each { |menu_item| %>
       <%= form_with(url: cart_path, method: "post", class: "menuitems-grid-item") do %>
