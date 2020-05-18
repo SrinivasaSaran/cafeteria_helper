@@ -1,18 +1,43 @@
 <article>
 
+  <% content_for :signed_in_header do %>
+    <a href="/menus" >
+      <%= submit_tag "Menus", class: "header-button" %>
+    </a>
+  <%end%>
+
   <section>
     <h1 class="menuitems-title"><%=@menu.name%> Menu</h1>
   </section>
+
+  <p class="flash-error-itemquantity"><%= flash[:error] %></p>
 
   <section class="menuitems-grid-container">
 
     <div class="menuitem-cart">
       <h2 class="cart-title">Cart</h2>
-      <p class="cart-item">S.No</p>
-      <p class="cart-item">Item Name</p>
-      <p class="cart-item">Item price</p>
-      <p class="cart-item">Quantity</p>
-      <p class="cart-item">Price</p>
+      <p class="cart-table-heading">S.No</p>
+      <p class="cart-table-heading">Item Name</p>
+      <p class="cart-table-heading">Item price</p>
+      <p class="cart-table-heading">Quantity</p>
+      <p class="cart-table-heading">Price</p>
+      <p class="cart-table-heading">  </p>
+      <%serial_no=0%>
+      <%Order.find(@order_id).order_items.each { |order_item|%>
+        <p class="cart-orderitem"><%=serial_no+=1%></p>
+        <p class="cart-orderitem-name"><%=order_item.menu_item_name%></p>
+        <p class="cart-orderitem">Rs.<%=order_item.menu_item_price%></p>
+        <p class="cart-orderitem"><%=order_item.quantity%></p>
+        <p class="cart-orderitem">Rs.<%=order_item.price%></p>
+        <%= form_with(url: "/",method: "delete", class: "cart-orderitem-detail") do %>
+          <%= image_submit_tag(
+                    "minus-circle.png",
+                    alt:"-",
+                    height: "16px",
+                    width: "16px",
+                    class:"cart-removeicon") %>
+        <%end%>
+      <%}%>
     </div>
     <% @menu.menu_items.each { |menu_item| %>
       <%= form_with(url: cart_path, method: "post", class: "menuitems-grid-item") do %>
@@ -20,6 +45,7 @@
         <p class="menuitem-name"><%= menu_item.name %></p>
         <%= hidden_field_tag :menu_item_name, menu_item.name %>
         <p class="menuitem-description"><%= menu_item.description %></p>
+        <%= hidden_field_tag :menu_id, @menu.id %>
         <span class="menuitem-price">
           <p>Rs.<%= menu_item.price %></p>
           <p>Quantity:  <%= number_field_tag "quantity", 1, in: 1..7, class: "menuitem-quantity" %></p>
