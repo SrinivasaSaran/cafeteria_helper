@@ -16,7 +16,7 @@ class UsersController < ApplicationController
                          address: params[:address],
                          phone_no: params[:phone_no])
       if user.valid?
-        order = Order.create!()
+        order = Order.create!(user_id: user.id)
         session[:current_user_id] = user.id
         session[:current_order_id] = order.id
         redirect_to root_path

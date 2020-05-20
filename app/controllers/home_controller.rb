@@ -4,8 +4,8 @@ class HomeController < ApplicationController
   def index
     if user = current_user
       redirect_to menus_path if user.role == "customer"
-      redirect_to "" if user.role == "clerk"
-      redirect_to "" if user.role == "admin"
+      redirect_to "/orders" if user.role == "clerk"
+      redirect_to "/users" if user.role == "admin"
     end
   end
 

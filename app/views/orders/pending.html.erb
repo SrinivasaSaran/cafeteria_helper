@@ -9,11 +9,15 @@
     </a>
   <%end%>
 
-  <h1 class="orders-title">Pending Orders</h1>
-
-  <%= render partial: "generate-invoice",
-             locals: {
-               orders: @pending_orders.where(delivered_at: nil)
-             } %>
+  <% if @pending_orders.empty? %>
+     <h1 class="no-orders-title">No Pending Orders:)</h1>
+     <h1 class="no-orders-title">Visit Menus to place Orders!</h1>
+  <%else%>
+    <h1 class="orders-title">Pending Orders</h1>
+    <%= render partial: "generate-invoice",
+              locals: {
+                orders: @pending_orders.where(delivered_at: nil)
+              } %>
+  <%end%>
 
 </article>

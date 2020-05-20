@@ -1,1 +1,18 @@
-<h1 class="about-me">Will be Updated Soon...</h1>
+<article>
+
+  <% content_for :header_options do %>
+
+    <section class="additional-header-content">
+          <a href="/" >
+            <%= submit_tag "Sign In", class: "header-button" %>
+          </a>
+          <a href="/users/new" >
+            <%= submit_tag "Sign Up", class: "header-button" %>
+          </a>
+    </section>
+
+  <%end%>
+
+  <h1 class="about-me">Will be Updated Soon...</h1>
+
+</article>

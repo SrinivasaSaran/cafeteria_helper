@@ -28,7 +28,7 @@
       <p class="invoice-total-value"><%=total_quantity%></p>
       <p class="invoice-total-value">Rs.<%=total_price%></p>
 
-      <p class="ordered-time"> Ordered at: <%= your_order.placed_at.to_s(:short) %></p>
+      <p class="ordered-time"> Ordered at: <%= your_order.placed_at.to_s(:long) %></p>
       <% if your_order.delivered_at==nil %>
         <p class="now-time">Time Now: <%=DateTime.now.to_s(:long)%></p>
         <%= submit_tag "Pending Delivery",disabled: true, class: "invoice-pendingbutton" %>
