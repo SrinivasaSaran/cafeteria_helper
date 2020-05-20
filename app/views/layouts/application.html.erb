@@ -18,7 +18,7 @@
         <%= form_with(url: signout_path, method: "delete", class: "additional-header-content") do %>
           <p class="header-username">
              <%= @current_user.name if @current_user.role=="customer"%>
-             <%= "Worker: #{@current_user.name}" if @current_user.role=="clerk"%>
+             <%= "Biller: #{@current_user.name}" if @current_user.role=="clerk"%>
              <%= "Owner: #{@current_user.name}" if @current_user.role=="admin"%>
           </p>
           <%= yield :signed_in_header %>

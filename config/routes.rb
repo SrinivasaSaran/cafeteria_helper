@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :users
   resources :menus
   resources :orders
+  resources :admins
+  resources :billers
   post "/orders/cart", to: "orders#cart", as: :cart
   delete "/orders/cart/remove", to: "orders#remove_from_cart", as: :remove_cart_item
 end

@@ -1,11 +1,11 @@
 class HomeController < ApplicationController
-  skip_before_action :ensure_user_logged_in
+  skip_before_action :ensure_user_logged_in, except: [:destroy]
 
   def index
     if user = current_user
       redirect_to menus_path if user.role == "customer"
-      redirect_to "/orders" if user.role == "clerk"
-      redirect_to "/users" if user.role == "admin"
+      redirect_to "/billers" if user.role == "clerk"
+      redirect_to "/admins" if user.role == "admin"
     end
   end
 
