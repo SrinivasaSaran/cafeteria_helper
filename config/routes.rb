@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   resources :billers
   post "/orders/cart", to: "orders#cart", as: :cart
   delete "/orders/cart/remove", to: "orders#remove_from_cart", as: :remove_cart_item
+  post "user/rolechange", to: "admins#role_change", as: :user_role_change
+  post "user/roleback", to: "admins#role_back", as: :original_role
 end

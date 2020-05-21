@@ -9,15 +9,6 @@
     </a>
   <%end%>
 
-  <% content_for :admin_header do %>
-    <p class="admin-walkin-description">
-      <%= "Using as Walk-in Customer..." %>
-    </p>
-    <a href="/">
-      <%= submit_tag "Back to Home", class:"admin-navigation-button" %>
-    </a>
-  <%end%>
-
   <h2 class="menu-title">Menus</h2>
   <section class="menus-grid-container">
     <% Menu.active.each{ |menu| %>

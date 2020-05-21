@@ -35,6 +35,16 @@
       <% end %>
     <%end%>
 
+    <% if @original_user%>
+      <%= form_with(url: original_role_path, method: "post", class: "admin-header-content") do %>
+        <p class="admin-walkin-description">
+          <%= "Biller: #{@original_user.name} is now Walk-in Customer..." if @original_user.role=="clerk" %>
+          <%= "Owner: #{@original_user.name} is now Walk-in Customer..." if @original_user.role=="admin" %>
+        </p>
+        <%= submit_tag "Back to Home", data: {disable_with: "Homecoming..."}, class:"admin-navigation-button" %>
+      <%end%>
+    <%end%>
+
     <%= yield %>
 
     <footer class="footer">

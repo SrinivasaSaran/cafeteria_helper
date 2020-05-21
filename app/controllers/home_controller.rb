@@ -12,7 +12,11 @@ class HomeController < ApplicationController
   def authorize
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password_digest])
-      order = Order.create!(user_id: user.id)
+      if user.role == "admin" || user.role == "clerk"
+        order = Order.create!(user_id: User.find_by(name: "Walk-in Customer").id)
+      else
+        order = Order.create!(user_id: user.id)
+      end
       session[:current_user_id] = user.id
       session[:current_order_id] = order.id
       redirect_to "/"

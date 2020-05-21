@@ -9,15 +9,6 @@
     </a>
   <%end%>
 
-  <% content_for :admin_header do %>
-    <p class="admin-walkin-description">
-      <%= "Using as Walk-in Customer..." %>
-    </p>
-    <a href="/">
-      <%= submit_tag "Back to Home", class:"admin-navigation-button" %>
-    </a>
-  <%end%>
-
   <% if @orders.empty? %>
      <h1 class="no-orders-title">No Orders have been placed by you Yet.</h1>
      <h1 class="no-orders-title">Visit Menus to place Orders!</h1>

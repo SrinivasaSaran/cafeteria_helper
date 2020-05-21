@@ -1,9 +1,9 @@
 <article>
 
   <% content_for :admin_header do %>
-    <a href="/menus">
+    <%= form_with(url: user_role_change_path, method: "post") do %>
       <%= submit_tag "Walk-in Customer", class:"admin-navigation-button" %>
-    </a>
+    <%end%>
     <a href="/menus">
       <%= submit_tag "Today's Invoices", class:"admin-navigation-button" %>
     </a>
