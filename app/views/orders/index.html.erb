@@ -9,14 +9,23 @@
     </a>
   <%end%>
 
-  <% if @pending_orders.empty? %>
+  <% content_for :admin_header do %>
+    <p class="admin-walkin-description">
+      <%= "Using as Walk-in Customer..." %>
+    </p>
+    <a href="/">
+      <%= submit_tag "Back to Home", class:"admin-navigation-button" %>
+    </a>
+  <%end%>
+
+  <% if @orders.empty? %>
      <h1 class="no-orders-title">No Orders have been placed by you Yet.</h1>
      <h1 class="no-orders-title">Visit Menus to place Orders!</h1>
   <%else%>
     <h1 class="orders-title">All  Orders</h1>
     <%= render partial: "generate-invoice",
               locals: {
-                orders: @pending_orders.order(:id)
+                orders: @orders.order(:id)
               } %>
   <%end%>
 

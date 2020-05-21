@@ -1,0 +1,16 @@
+<article>
+
+  <% content_for :admin_header do %>
+    <a href="/menus">
+      <%= submit_tag "Walk-in Customer", class:"admin-navigation-button" %>
+    </a>
+    <a href="/menus">
+      <%= submit_tag "Today's Invoices", class:"admin-navigation-button" %>
+    </a>
+  <% end %>
+
+  <% Order.order(:id).each { |order| %>
+
+  <%}%>
+
+</article>

@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
   def index
-    @pending_orders = User.find(session[:current_user_id]).orders.where("placed_at <= ?", DateTime.now)
+    @orders = Order.placed_orders(session[:current_user_id])
   end
 
   def pending
-    @pending_orders = User.find(session[:current_user_id]).orders.where("placed_at <= ?", DateTime.now)
+    @orders = Order.placed_orders(session[:current_user_id])
   end
 
   def create

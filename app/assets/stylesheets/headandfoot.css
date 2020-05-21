@@ -45,6 +45,26 @@ body {
   color: rgb(37, 39, 39);
 }
 
+.admin-header-content {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 30px;
+}
+
+.admin-walkin-description {
+  font-size: 22px;
+  padding: 10px;
+  color: rgb(118, 119, 119);
+}
+
+.admin-navigation-button {
+  border: 1px solid rgb(56, 204, 26);
+  background-color: rgb(33, 209, 48);
+  padding: 10px 20px;
+  color: white;
+  border-radius: 14px;
+}
+
 .footer {
   border-top: 2px solid;
   padding: 20px;

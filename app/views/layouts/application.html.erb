@@ -27,6 +27,14 @@
       <%end%>
     </header>
 
+    <%if @current_user%>
+      <% if @current_user.role== "admin" || @current_user.role=="clerk" %>
+        <div class="admin-header-content">
+          <%= yield :admin_header %>
+        </div>
+      <% end %>
+    <%end%>
+
     <%= yield %>
 
     <footer class="footer">
