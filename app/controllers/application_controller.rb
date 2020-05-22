@@ -3,10 +3,26 @@ class ApplicationController < ActionController::Base
   add_flash_types :error
 
   def ensure_user_logged_in
+    original_user
     unless current_user
       redirect_to "/"
     end
-    original_user
+  end
+
+  def ensure_admin
+    if user = current_user
+      unless user.role == "admin"
+        redirect_to root_path
+      end
+    end
+  end
+
+  def ensure_biller
+    if user = current_user
+      unless user.role == "clerk"
+        redirect_to root_path
+      end
+    end
   end
 
   def current_user

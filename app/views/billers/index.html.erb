@@ -4,8 +4,11 @@
     <%= form_with(url: user_role_change_path, method: "post") do %>
       <%= submit_tag "Walk-in Customer", class:"admin-navigation-button" %>
     <%end%>
-    <a href="/menus">
+    <a href="/">
       <%= submit_tag "Today's Invoices", class:"admin-navigation-button" %>
+    </a>
+    <a href="/menus">
+      <%= submit_tag "Order for You", class:"admin-navigation-button" %>
     </a>
   <% end %>
 

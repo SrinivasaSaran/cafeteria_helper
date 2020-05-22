@@ -12,6 +12,12 @@
     </a>
   <%end%>
 
+  <% content_for :admin_header do %>
+    <a href="/">
+      <%= submit_tag "Back to Home", class:"admin-navigation-button" %>
+    </a>
+  <%end%>
+
   <h1 class="menuitems-title"><%=@menu.name%> Menu</h1>
   <p class="flash-error-itemquantity"><%= flash[:error] %></p>
 

@@ -9,6 +9,12 @@
     </a>
   <%end%>
 
+  <% content_for :admin_header do %>
+    <a href="/">
+      <%= submit_tag "Back to Home", class:"admin-navigation-button" %>
+    </a>
+  <%end%>
+
   <% if @orders.empty? %>
      <h1 class="no-orders-title">No Pending Orders:)</h1>
      <h1 class="no-orders-title">Visit Menus to place Orders!</h1>
