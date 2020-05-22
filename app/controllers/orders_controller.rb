@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   end
 
   def pending
-    @orders = Order.placed_orders(session[:current_user_id])
+    @orders = Order.placed_orders(session[:current_user_id]).where(delivered_at: nil)
   end
 
   def create

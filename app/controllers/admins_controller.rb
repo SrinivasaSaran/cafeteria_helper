@@ -1,7 +1,8 @@
 class AdminsController < ApplicationController
-  before_action :ensure_admin, except: [:role_change, :role_back]
+  before_action :ensure_admin, except: [:role_change, :role_back, :mark_as_delivered]
 
   def index
+    @orders = Order.where("placed_at <= ?", DateTime.now).where(delivered_at: nil)
   end
 
   def role_change
@@ -16,6 +17,13 @@ class AdminsController < ApplicationController
     if User.find(session[:original_user_id]).role == "clerk" || User.find(session[:original_user_id]).role == "admin"
       session[:current_user_id] = session[:original_user_id]
       session[:original_user_id] = nil
+      redirect_to root_path
+    end
+  end
+
+  def mark_as_delivered
+    if User.find(session[:current_user_id]).role == "clerk" || User.find(session[:current_user_id]).role == "admin"
+      Order.find(params[:order_id]).update!(delivered_at: DateTime.now)
       redirect_to root_path
     end
   end

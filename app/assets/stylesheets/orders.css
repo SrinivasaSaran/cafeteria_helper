@@ -34,6 +34,12 @@
   grid-column: 1/6;
 }
 
+.invoice-username {
+  padding-bottom: 10px;
+  font-size: 22px;
+  grid-column: 1/6;
+}
+
 .invoice-table-heading {
   font-size: 20px;
   padding: 20px 3px;
@@ -74,6 +80,20 @@
   padding-left: 25px;
   text-align: left;
   padding-top: 20px;
+}
+
+.invoice-markasdelivered-form {
+  grid-column: 1/6;
+}
+
+.invoice-markasdelivered-button {
+  color: white;
+  border: 1px solid rgb(190, 55, 149);
+  background-color: rgb(190, 55, 149);
+  margin-top: 40px;
+  padding: 20px 25px;
+  font-size: 28px;
+  width: 100%;
 }
 
 .invoice-pendingbutton {

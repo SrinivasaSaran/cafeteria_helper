@@ -21,8 +21,15 @@
     </a>
   <% end %>
 
-  <% Order.order(:id).each { |order| %>
-
-  <%}%>
+  <% if @orders.empty? %>
+     <h1 class="no-orders-title">No Pending Orders :)</h1>
+  <%else%>
+    <h1 class="orders-title">All Pending Orders</h1>
+    <%= render partial: "orders/generate-invoice",
+              locals: {
+                orders: @orders.order(:placed_at),
+                role: "admin"
+              } %>
+  <%end%>
 
 </article>

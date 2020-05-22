@@ -22,7 +22,8 @@
     <h1 class="orders-title">Pending Orders</h1>
     <%= render partial: "generate-invoice",
               locals: {
-                orders: @orders.where(delivered_at: nil)
+                orders: @orders.order(:id),
+                role: "customer"
               } %>
   <%end%>
 

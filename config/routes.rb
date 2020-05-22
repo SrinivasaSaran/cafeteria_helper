@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   delete "/orders/cart/remove", to: "orders#remove_from_cart", as: :remove_cart_item
   post "user/rolechange", to: "admins#role_change", as: :user_role_change
   post "user/roleback", to: "admins#role_back", as: :original_role
+  post "order/deliver", to: "admins#mark_as_delivered", as: :deliver_order
 end
