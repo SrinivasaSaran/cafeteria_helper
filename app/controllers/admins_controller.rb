@@ -7,16 +7,22 @@ class AdminsController < ApplicationController
 
   def role_change
     if User.find(session[:current_user_id]).role == "clerk" || User.find(session[:current_user_id]).role == "admin"
+      session[:original_order_id] = session[:current_order_id]
       session[:original_user_id] = session[:current_user_id]
+      session[:current_order_id] = session[:walkin_order_id]
       session[:current_user_id] = Order.find(session[:current_order_id]).user.id
+      session[:walkin_order_id] = nil
       redirect_to menus_path
     end
   end
 
   def role_back
     if User.find(session[:original_user_id]).role == "clerk" || User.find(session[:original_user_id]).role == "admin"
+      session[:walkin_order_id] = session[:current_order_id]
       session[:current_user_id] = session[:original_user_id]
+      session[:current_order_id] = session[:original_order_id]
       session[:original_user_id] = nil
+      session[:original_order_id] = nil
       redirect_to root_path
     end
   end

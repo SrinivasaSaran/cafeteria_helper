@@ -4,7 +4,11 @@
     <div class="individual-invoice">
 
       <h2 class="invoice-title">Order Id: <%= your_order.id %></h2>
-      <h4 class="invoice-username"><%= "User: #{your_order.user.name}" if role=="admin" || role=="clerk" %></h4>
+      <% if role=="admin" || role=="clerk" %>
+        <h4 class="invoice-username"><%= "User: #{your_order.user.name} (Owner)"  if your_order.user.role=="admin" %></h4>
+        <h4 class="invoice-username"><%= "User: #{your_order.user.name} (Biller)" if your_order.user.role=="clerk" %></h4>
+        <h4 class="invoice-username"><%= "User: #{your_order.user.name}" if your_order.user.role=="customer" %></h4>
+      <%end%>
 
       <p class="invoice-table-heading">S.No</p>
       <p class="invoice-table-heading">Item Name</p>
