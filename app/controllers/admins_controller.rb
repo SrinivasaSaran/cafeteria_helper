@@ -5,6 +5,9 @@ class AdminsController < ApplicationController
     @orders = Order.where("placed_at <= ?", DateTime.now).where(delivered_at: nil)
   end
 
+  def manage_menus
+  end
+
   def role_change
     if User.find(session[:current_user_id]).role == "clerk" || User.find(session[:current_user_id]).role == "admin"
       session[:original_order_id] = session[:current_order_id]

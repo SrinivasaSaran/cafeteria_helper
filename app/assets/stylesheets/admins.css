@@ -1,0 +1,28 @@
+.manage-menus-title {
+  font-size: 30px;
+  margin: 60px 0px;
+  text-align: center;
+}
+
+.menu-details {
+  display: grid;
+  margin: 50px 250px;
+  padding: 10px;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 40px 400px 80px;
+}
+
+.menu-name {
+  font-size: 22px;
+  padding: 10px;
+}
+
+.menu-status {
+  border: 1px solid rgb(33, 224, 33);
+  background-color: rgb(48, 216, 48);
+  color: whitesmoke;
+  padding: 0px 10px;
+  height: 30px;
+}

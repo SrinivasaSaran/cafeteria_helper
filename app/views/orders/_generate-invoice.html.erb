@@ -40,7 +40,7 @@
         <p class="now-time">Time Now: <%=DateTime.now.to_s(:long)%></p>
 
         <% if role=="admin" || role=="clerk" %>
-          <%= form_with(url: deliver_order_path, method: "post", class: "invoice-markasdelivered-form") do %>
+          <%= form_with(url: deliver_order_path, method: "patch", class: "invoice-markasdelivered-form") do %>
             <%= hidden_field_tag :order_id, your_order.id %>
             <%= submit_tag "Mark as Delivered", data: {confirm: "Are you Sure..?"}, class: "invoice-markasdelivered-button" %>
           <%end%>

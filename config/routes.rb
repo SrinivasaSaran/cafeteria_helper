@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/info", to: "home#info", as: :info
   delete "/signout", to: "home#destroy", as: :signout
   get "/orders/pending", to: "orders#pending", as: :pending_orders
+  get "admins/menus", to: "admins#manage_menus", as: :manage_menus
   resources :users
   resources :menus
   resources :orders
@@ -15,5 +16,5 @@ Rails.application.routes.draw do
   delete "/orders/cart/remove", to: "orders#remove_from_cart", as: :remove_cart_item
   post "user/rolechange", to: "admins#role_change", as: :user_role_change
   post "user/roleback", to: "admins#role_back", as: :original_role
-  post "order/deliver", to: "admins#mark_as_delivered", as: :deliver_order
+  patch "order/deliver", to: "admins#mark_as_delivered", as: :deliver_order
 end

@@ -1,6 +1,9 @@
 <article>
 
   <% content_for :admin_header do %>
+    <a href="/">
+      <%= submit_tag "Home", class:"admin-navigation-button" %>
+    </a>
     <%= form_with(url: user_role_change_path, method: "post") do %>
       <%= submit_tag "Walk-in Customer", class:"admin-navigation-button" %>
     <%end%>
@@ -16,23 +19,20 @@
     <a href="/">
       <%= submit_tag "All Invoices", class:"admin-navigation-button" %>
     </a>
-    <a href="/admins/menus">
-      <%= submit_tag "Manage Menus", class:"admin-navigation-button" %>
-    </a>
     <a href="/menus">
       <%= submit_tag "Order for You", class:"admin-navigation-button" %>
     </a>
   <% end %>
 
-  <% if @orders.empty? %>
-     <h1 class="no-orders-title">No Pending Orders :)</h1>
-  <%else%>
-    <h1 class="orders-title">All Pending Orders</h1>
-    <%= render partial: "orders/generate-invoice",
-              locals: {
-                orders: @orders.order(:placed_at),
-                role: "admin"
-              } %>
-  <%end%>
+  <h2 class="manage-menus-title">Manage Menus</h2>
+
+  <% Menu.order(:id).each { |menu| %>
+    <%= form_with(url: "/menus/#{menu.id}", method: "patch", class: "menu-details") do %>
+      <%= image_submit_tag "menu-active" if menu.active_status%>
+      <%= image_submit_tag "menu-inactive" if !menu.active_status%>
+      <h3 class="menu-name"><%= menu.name %></h3>
+      <%= submit_tag :Active, disabled: true, class: "menu-status" if menu.active_status%>
+    <%end%>
+  <%}%>
 
 </article>
