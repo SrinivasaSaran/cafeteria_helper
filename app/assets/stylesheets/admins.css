@@ -37,7 +37,7 @@
   background-color: white;
   align-items: center;
   justify-content: center;
-  grid-template-columns: 40px 400px 80px;
+  grid-template-columns: 40px 400px 80px auto auto;
 }
 
 .menu-name {
@@ -59,4 +59,15 @@
   color: whitesmoke;
   padding: 0px 10px;
   height: 30px;
+}
+
+.menu-icon {
+  height: 25px;
+  width: 25px;
+  padding-left: 75px;
+  visibility: hidden;
+}
+
+.menu-details:hover .menu-icon {
+  visibility: visible;
 }
