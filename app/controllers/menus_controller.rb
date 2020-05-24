@@ -18,6 +18,9 @@ class MenusController < ApplicationController
     @order_id = session[:current_order_id]
   end
 
+  def edit
+  end
+
   def update
     if Menu.find(params[:id]).menu_items.empty?
       redirect_to manage_menus_path, invalid: "You can't chose an Empty Menu..!  Add Items First"

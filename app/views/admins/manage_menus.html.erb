@@ -43,7 +43,7 @@
       <h3 class="menu-name"><%= menu.name %></h3>
       <%= submit_tag :Active, disabled: true, class: "menu-true-status" if menu.active_status%>
       <%= submit_tag :InActive, disabled: true, class: "menu-false-status" if !menu.active_status%>
-      <%= link_to (manage_menuitems_path) do %>
+      <%= link_to("/menus/#{menu.id}/edit") do %>
         <%= image_submit_tag "edit", title: "Tap to Update Menuitems", class: "menu-icon" %>
       <%end%>
       <%= form_with(url: "/menus/#{menu.id}", method: "delete") do %>

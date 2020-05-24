@@ -71,3 +71,33 @@
 .menu-details:hover .menu-icon {
   visibility: visible;
 }
+
+.updatemenu-title {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  margin: 60px 0px;
+  justify-content: center;
+}
+
+.menuitem-section {
+  display: grid;
+  grid-template-columns: 50px 300px 500px auto auto auto;
+  margin: 30px 50px;
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
+  padding: 20px;
+}
+
+.menuname-edit-icon {
+  padding-left: 20px;
+  height: 30px;
+  width: 30px;
+}
+
+.menuitem-icon {
+  height: 25px;
+  width: 25px;
+  padding-left: 75px;
+}

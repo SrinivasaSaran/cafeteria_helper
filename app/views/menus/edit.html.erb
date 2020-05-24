@@ -1,0 +1,52 @@
+<article>
+
+  <% content_for :admin_header do %>
+    <a href="/">
+      <%= submit_tag "Home", class:"admin-navigation-button" %>
+    </a>
+    <%= form_with(url: user_role_change_path, method: "post") do %>
+      <%= submit_tag "Walk-in Customer", class:"admin-navigation-button" %>
+    <%end%>
+    <a href="/">
+      <%= submit_tag "Stats", class:"admin-navigation-button" %>
+    </a>
+    <a href="/">
+      <%= submit_tag "Billers", class:"admin-navigation-button" %>
+    </a>
+    <a href="/">
+      <%= submit_tag "Users", class:"admin-navigation-button" %>
+    </a>
+    <a href="/">
+      <%= submit_tag "All Invoices", class:"admin-navigation-button" %>
+    </a>
+    <a href="/admins/menus">
+      <%= submit_tag "Manage Menus", class:"admin-navigation-button" %>
+    </a>
+    <a href="/menus">
+      <%= submit_tag "Order for You", class:"admin-navigation-button" %>
+    </a>
+  <% end %>
+
+  <h3 class="updatemenu-title">
+    <%= Menu.find(params[:id]).name %>
+    <%= image_submit_tag "edit", class: "menuname-edit-icon" %>
+  </h3>
+
+  <% Menu.find(params[:id]).menu_items.order(:id).each{ |item| %>
+    <div class="menuitem-section">
+      <%= form_with(url: "", method: "patch") do %>
+        <%= image_submit_tag "menu-active", title: "Click here to make this Menu Inactive"%>
+      <%end%>
+      <h4><%= item.name %></h4>
+      <p><%= item.description %></p>
+      <p>Rs.<%= item.price %></p>
+      <%= link_to("/") do %>
+        <%= image_submit_tag "edit", title: "Tap to Update Menuitems", class: "menuitem-icon" %>
+      <%end%>
+      <%= form_with(url: "/menu_items/#{item.id}", method: "delete") do %>
+        <%= image_submit_tag "trash-can", title: "Tap to Delete Menu", data: {confirm: "Delete this Menu?"}, class: "menuitem-icon" %>
+      <%end%>
+    </div>
+  <%}%>
+
+</article>
