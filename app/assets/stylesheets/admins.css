@@ -4,6 +4,32 @@
   text-align: center;
 }
 
+.addmenu {
+  display: flex;
+  justify-content: center;
+}
+
+.addmenu-inputbar {
+  padding: 7px 15px;
+  width: 300px;
+}
+
+.addmenu-button {
+  margin-left: 40px;
+  padding: 7px 10px;
+  border: 1px solid darkorchid;
+  background-color: darkorchid;
+  color: white;
+  border-radius: 7px;
+}
+
+.managemenus-flash-error {
+  font-size: 20px;
+  text-align: center;
+  color: red;
+  padding-top: 30px;
+}
+
 .menu-details {
   display: grid;
   margin: 50px 250px;
@@ -19,9 +45,17 @@
   padding: 10px;
 }
 
-.menu-status {
+.menu-true-status {
   border: 1px solid rgb(33, 224, 33);
   background-color: rgb(48, 216, 48);
+  color: whitesmoke;
+  padding: 0px 10px;
+  height: 30px;
+}
+
+.menu-false-status {
+  border: 1px solid rgb(224, 71, 33);
+  background-color: rgb(240, 16, 46);
   color: whitesmoke;
   padding: 0px 10px;
   height: 30px;

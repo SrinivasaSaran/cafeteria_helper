@@ -26,12 +26,21 @@
 
   <h2 class="manage-menus-title">Manage Menus</h2>
 
+  <%= form_with(url: menus_path, method: "post", class: "addmenu") do %>
+    <%= text_field_tag :menu_name, nil, placeholder: "Type a Menu name you want to add", class: "addmenu-inputbar" %>
+    <%= submit_tag "Create Menu", data: {disable_with: "Creating..."}, class: "addmenu-button" %>
+  <%end%>
+
+  <h4 class="managemenus-flash-error"><%= flash[:error] %></h4>
+  <h4 class="managemenus-flash-error"><%= flash[:invalid] %></h4>
+
   <% Menu.order(:id).each { |menu| %>
     <%= form_with(url: "/menus/#{menu.id}", method: "patch", class: "menu-details") do %>
-      <%= image_submit_tag "menu-active" if menu.active_status%>
-      <%= image_submit_tag "menu-inactive" if !menu.active_status%>
+      <%= image_submit_tag "menu-active", title: "Click here to make this Menu Inactive" if menu.active_status%>
+      <%= image_submit_tag "menu-inactive", title: "Click here to make this Menu Active" if !menu.active_status%>
       <h3 class="menu-name"><%= menu.name %></h3>
-      <%= submit_tag :Active, disabled: true, class: "menu-status" if menu.active_status%>
+      <%= submit_tag :Active, disabled: true, class: "menu-true-status" if menu.active_status%>
+      <%= submit_tag :InActive, disabled: true, class: "menu-false-status" if !menu.active_status%>
     <%end%>
   <%}%>
 
