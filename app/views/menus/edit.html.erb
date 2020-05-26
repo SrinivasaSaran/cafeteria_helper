@@ -32,6 +32,16 @@
     <%= image_submit_tag "edit", class: "menuname-edit-icon" %>
   </h3>
 
+  <%= form_with(url: menu_items_path, method: "post", class: "addmenuitem-inputbar") do %>
+    <%= text_field_tag :name, nil, placeholder: "Name of the Item", class: "addmenuitem-name" %>
+    <%= hidden_field_tag :menu_id, params[:id] %>
+    <%= text_field_tag :description, nil, placeholder: "Describe about the Item", class: "addmenuitem-description" %>
+    <%= number_field_tag :price, nil, min: 0, step: 0.01, placeholder: "Item's Price", class: "addmenuitem-price" %>
+    <%= submit_tag "Create Item", data: {disable_with: "Creating..."}, class: "addmenuitem-button" %>
+  <%end%>
+
+  <h4 class="flasherror-addmenuitem"><%= flash[:error] %></h4>
+
   <% Menu.find(params[:id]).menu_items.order(:id).each{ |item| %>
     <div class="menuitem-section">
       <%= form_with(url: "", method: "patch") do %>
@@ -39,11 +49,12 @@
       <%end%>
       <h4><%= item.name %></h4>
       <p><%= item.description %></p>
-      <p>Rs.<%= item.price %></p>
+      <p class="manage-menuitem-price">Rs.<%= item.price %></p>
       <%= link_to("/") do %>
         <%= image_submit_tag "edit", title: "Tap to Update Menuitems", class: "menuitem-icon" %>
       <%end%>
       <%= form_with(url: "/menu_items/#{item.id}", method: "delete") do %>
+        <%= hidden_field_tag :menu_id, params[:id] %>
         <%= image_submit_tag "trash-can", title: "Tap to Delete Menu", data: {confirm: "Delete this Menu?"}, class: "menuitem-icon" %>
       <%end%>
     </div>

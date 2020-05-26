@@ -16,7 +16,7 @@
 
 .addmenu-button {
   margin-left: 40px;
-  padding: 7px 10px;
+  padding: 7px 20px;
   border: 1px solid darkorchid;
   background-color: darkorchid;
   color: white;
@@ -72,6 +72,10 @@
   visibility: visible;
 }
 
+.menu-details:hover {
+  background-color: rgb(231, 231, 231);
+}
+
 .updatemenu-title {
   display: flex;
   align-items: center;
@@ -80,14 +84,60 @@
   justify-content: center;
 }
 
+.addmenuitem-inputbar {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+}
+
+.addmenuitem-name {
+  padding: 7px 15px;
+}
+
+.addmenuitem-description {
+  margin-left: 20px;
+  padding: 7px 15px;
+  width: 500px;
+}
+
+.addmenuitem-price {
+  margin-left: 20px;
+  padding: 7px 15px;
+  width: 120px;
+}
+
+.addmenuitem-button {
+  margin-left: 30px;
+  border: 1px solid darkorchid;
+  background-color: darkorchid;
+  border-radius: 10px;
+  color: white;
+  padding: 7px 20px;
+}
+
+.flasherror-addmenuitem {
+  font-size: 22px;
+  color: red;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
 .menuitem-section {
   display: grid;
-  grid-template-columns: 50px 300px 500px auto auto auto;
+  grid-template-columns: 50px 300px 500px 200px auto auto;
   margin: 30px 50px;
   justify-content: center;
   align-items: center;
   background-color: whitesmoke;
   padding: 20px;
+}
+
+.menuitem-section:hover {
+  background-color: rgb(231, 231, 231);
+}
+
+.manage-menuitem-price {
+  text-align: center;
 }
 
 .menuname-edit-icon {
