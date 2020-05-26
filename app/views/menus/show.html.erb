@@ -76,7 +76,7 @@
 
     </div>
 
-    <% @menu.menu_items.each { |menu_item| %>
+    <% @menu.menu_items.where(active_status: true).each { |menu_item| %>
 
       <%= form_with(url: cart_path, method: "post", class: "menuitems-grid-item") do %>
         <%= hidden_field_tag :menu_item_id, menu_item.id %>

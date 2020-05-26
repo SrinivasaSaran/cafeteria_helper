@@ -29,7 +29,7 @@
 
   <h3 class="updatemenu-title">
     <%= Menu.find(params[:id]).name %>
-    <%= image_submit_tag "edit", class: "menuname-edit-icon" %>
+    <%= image_submit_tag "edit.png", class: "menuname-edit-icon" %>
   </h3>
 
   <%= form_with(url: menu_items_path, method: "post", class: "addmenuitem-inputbar") do %>
@@ -42,20 +42,22 @@
 
   <h4 class="flasherror-addmenuitem"><%= flash[:error] %></h4>
 
-  <% Menu.find(params[:id]).menu_items.order(:id).each{ |item| %>
+  <% Menu.find(params[:id]).menu_items.order(:active_status).reverse.each{ |item| %>
     <div class="menuitem-section">
-      <%= form_with(url: "", method: "patch") do %>
-        <%= image_submit_tag "menu-active", title: "Click here to make this Menu Inactive"%>
+      <%= form_with(url: menu_item_path(id: item.id), method: "patch") do %>
+        <%= hidden_field_tag :menu_id, params[:id] %>
+        <%= image_submit_tag "menu-active.png", title: "Click here to make this Item Inactive" if item.active_status%>
+        <%= image_submit_tag "menu-inactive.png", title: "Click here to make this Item Active" if !item.active_status%>
       <%end%>
       <h4><%= item.name %></h4>
       <p><%= item.description %></p>
       <p class="manage-menuitem-price">Rs.<%= item.price %></p>
       <%= link_to("/") do %>
-        <%= image_submit_tag "edit", title: "Tap to Update Menuitems", class: "menuitem-icon" %>
+        <%= image_submit_tag "edit.png", title: "Tap to Update Menuitems", class: "menuitem-icon" %>
       <%end%>
       <%= form_with(url: "/menu_items/#{item.id}", method: "delete") do %>
         <%= hidden_field_tag :menu_id, params[:id] %>
-        <%= image_submit_tag "trash-can", title: "Tap to Delete Menu", data: {confirm: "Delete this Menu?"}, class: "menuitem-icon" %>
+        <%= image_submit_tag "trash-can.png", title: "Tap to Delete Menu", data: {confirm: "Delete this Menu?"}, class: "menuitem-icon" %>
       <%end%>
     </div>
   <%}%>

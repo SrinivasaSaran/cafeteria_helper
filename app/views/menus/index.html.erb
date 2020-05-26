@@ -18,7 +18,9 @@
   <h2 class="menu-title">Menus</h2>
   <section class="menus-grid-container">
     <% Menu.active.each{ |menu| %>
-      <a href="/menus/<%=menu.id%>", class="menus-grid-item" ><%= menu.name %></a>
+      <% if !menu.menu_items.where(active_status: true).empty? %>
+        <a href="/menus/<%=menu.id%>", class="menus-grid-item" ><%= menu.name %></a>
+      <%end%>
     <%}%>
   </section>
 

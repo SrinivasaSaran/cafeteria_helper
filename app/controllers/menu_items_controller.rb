@@ -7,6 +7,7 @@ class MenuItemsController < ApplicationController
       description: params[:description],
       menu_id: params[:menu_id],
       price: params[:price],
+      active_status: false,
     )
     if item.valid?
       redirect_to edit_menu_path(params[:menu_id])
@@ -15,8 +16,15 @@ class MenuItemsController < ApplicationController
     end
   end
 
+  def update
+    Menu.find(params[:menu_id])
+        .menu_items.find(params[:id])
+        .update!(active_status: !MenuItem.find(params[:id]).active_status)
+    redirect_to edit_menu_path(params[:menu_id])
+  end
+
   def destroy
-    MenuItem.find(params[:id]).destroy
+    Menu.find(params[:menu_id]).menu_items.find(params[:id]).destroy
     redirect_to edit_menu_path(params[:menu_id])
   end
 end

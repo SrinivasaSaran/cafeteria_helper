@@ -37,17 +37,17 @@
   <% Menu.order(:id).each { |menu| %>
     <div  class="menu-details">
       <%= form_with(url: "/menus/#{menu.id}", method: "patch") do %>
-        <%= image_submit_tag "menu-active", title: "Click here to make this Menu Inactive" if menu.active_status%>
-        <%= image_submit_tag "menu-inactive", title: "Click here to make this Menu Active" if !menu.active_status%>
+        <%= image_submit_tag "menu-active.png", title: "Click here to make this Menu Inactive" if menu.active_status%>
+        <%= image_submit_tag "menu-inactive.png", title: "Click here to make this Menu Active" if !menu.active_status%>
       <%end%>
       <h3 class="menu-name"><%= menu.name %></h3>
       <%= submit_tag :Active, disabled: true, class: "menu-true-status" if menu.active_status%>
       <%= submit_tag :InActive, disabled: true, class: "menu-false-status" if !menu.active_status%>
       <%= link_to("/menus/#{menu.id}/edit") do %>
-        <%= image_submit_tag "edit", title: "Tap to Update Menuitems", class: "menu-icon" %>
+        <%= image_submit_tag "edit.png", title: "Tap to Update Menuitems", class: "menu-icon" %>
       <%end%>
       <%= form_with(url: "/menus/#{menu.id}", method: "delete") do %>
-        <%= image_submit_tag "trash-can", title: "Tap to Delete Menu", data: {confirm: "Delete this Menu?"}, class: "menu-icon" %>
+        <%= image_submit_tag "trash-can.png", title: "Tap to Delete Menu", data: {confirm: "Delete this Menu?"}, class: "menu-icon" %>
       <%end%>
     </div>
   <%}%>
