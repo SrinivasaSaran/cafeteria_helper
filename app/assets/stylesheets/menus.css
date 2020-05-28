@@ -35,6 +35,11 @@
   text-decoration: underline rgb(220, 217, 20);
 }
 
+.menus-grid-item:hover {
+  background-color: rgb(192, 190, 79);
+  text-decoration: underline rgb(192, 190, 79);
+}
+
 .menuitems-grid-container {
   display: grid;
   grid-template-columns: auto auto 630px;

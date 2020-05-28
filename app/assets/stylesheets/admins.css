@@ -64,7 +64,7 @@
 .menu-icon {
   height: 25px;
   width: 25px;
-  padding-left: 75px;
+  margin-left: 75px;
   visibility: hidden;
 }
 
@@ -141,7 +141,7 @@
 }
 
 .menuname-edit-icon {
-  padding-left: 20px;
+  margin-left: 20px;
   height: 30px;
   width: 30px;
 }
@@ -149,5 +149,21 @@
 .menuitem-icon {
   height: 25px;
   width: 25px;
-  padding-left: 75px;
+  margin-left: 75px;
+}
+
+.list-users-section {
+  margin: 50px 150px;
+}
+
+.list-users-title {
+  margin-top: 15px;
+  padding: 20px;
+  font-size: 28px;
+}
+
+.list-users-details {
+  margin-left: 100px;
+  padding: 8px 0px;
+  font-size: 20px;
 }

@@ -1,0 +1,11 @@
+<% count = 0 %>
+<h2 class="list-users-title">
+  <%= title %>
+
+</h2>
+<% User.order(:id).where("role = ?", role).each { |user| %>
+  <div class="list-users-details">
+    <%= count += 1 %>.
+    <%= user.name %>
+  </div>
+<%}%>

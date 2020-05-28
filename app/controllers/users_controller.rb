@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :ensure_user_logged_in
+  before_action :ensure_admin, only: [:index]
 
   def index
   end
