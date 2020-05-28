@@ -5,7 +5,9 @@
 </h2>
 <% User.order(:id).where("role = ?", role).each { |user| %>
   <div class="list-users-details">
-    <%= count += 1 %>.
-    <%= user.name %>
+    <p><%= count += 1 %>. <%= user.name %></p>
+    <p><%= user.address %></p>
+    <p><%= user.email %></p>
+    <p><%= user.phone_no %></p>
   </div>
 <%}%>
