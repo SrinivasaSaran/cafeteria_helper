@@ -1,0 +1,32 @@
+<% content_for :admin_header do %>
+  <a href="/">
+    <%= submit_tag "Home", class:"admin-navigation-button" if !(current_page_name == "Home") %>
+    <%= submit_tag "Home", class:"present-admin-navigation-button" if current_page_name == "Home"%>
+  </a>
+  <%= form_with(url: user_role_change_path, method: "post") do %>
+    <%= submit_tag "Walk-in Customer", class:"admin-navigation-button" %>
+  <%end%>
+  <a href="/">
+    <%= submit_tag "Stats", class:"admin-navigation-button" if !(current_page_name == "Stats") %>
+    <%= submit_tag "Stats", class:"present-admin-navigation-button" if current_page_name == "Stats" %>
+  </a>
+  <a href="/admins/managebillers">
+    <%= submit_tag "Manage Billers", class:"admin-navigation-button" if !(current_page_name == "Manage Billers") %>
+    <%= submit_tag "Manage Billers", class:"present-admin-navigation-button" if current_page_name == "Manage Billers" %>
+  </a>
+  <a href="/users">
+    <%= submit_tag "Users", class:"admin-navigation-button" if !(current_page_name == "Users") %>
+    <%= submit_tag "Users", class:"present-admin-navigation-button" if current_page_name == "Users" %>
+  </a>
+  <a href="/">
+    <%= submit_tag "All Invoices", class:"admin-navigation-button" if !(current_page_name == "All Invoices") %>
+    <%= submit_tag "All Invoices", class:"present-admin-navigation-button" if current_page_name == "All Invoices" %>
+  </a>
+  <a href="/admins/menus">
+    <%= submit_tag "Manage Menus", class:"admin-navigation-button" if !(current_page_name == "Manage Menus") %>
+    <%= submit_tag "Manage Menus", class:"present-admin-navigation-button" if current_page_name == "Manage Menus" %>
+  </a>
+  <a href="/menus">
+    <%= submit_tag "Order for You", class:"admin-navigation-button" %>
+  </a>
+<% end %>

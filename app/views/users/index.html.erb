@@ -1,28 +1,11 @@
 <article>
 
-  <% content_for :admin_header do %>
-    <a href="/">
-      <%= submit_tag "Home", class:"admin-navigation-button" %>
-    </a>
-    <%= form_with(url: user_role_change_path, method: "post") do %>
-      <%= submit_tag "Walk-in Customer", class:"admin-navigation-button" %>
-    <%end%>
-    <a href="/">
-      <%= submit_tag "Stats", class:"admin-navigation-button" %>
-    </a>
-    <a href="/admins/managebillers">
-      <%= submit_tag "Manage Billers", class:"admin-navigation-button" %>
-    </a>
-    <a href="/">
-      <%= submit_tag "All Invoices", class:"admin-navigation-button" %>
-    </a>
-    <a href="/admins/menus">
-      <%= submit_tag "Manage Menus", class:"admin-navigation-button" %>
-    </a>
-    <a href="/menus">
-      <%= submit_tag "Order for You", class:"admin-navigation-button" %>
-    </a>
-  <% end %>
+  <section>
+    <%= render partial: "admins/admins-navigator",
+              locals: {
+                current_page_name: "Users"
+              } %>
+  </section>
 
   <section>
     <%= render partial: "users/search_user",

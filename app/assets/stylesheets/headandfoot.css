@@ -65,6 +65,14 @@ body {
   border-radius: 14px;
 }
 
+.present-admin-navigation-button {
+  border: 1px solid rgb(228, 107, 52);
+  background-color: rgb(228, 107, 52);
+  padding: 10px 20px;
+  color: white;
+  border-radius: 14px;
+}
+
 .footer {
   border-top: 2px solid;
   padding: 20px;

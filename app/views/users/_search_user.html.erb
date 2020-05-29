@@ -1,25 +1,25 @@
-  <%= form_with(url: submit_path, method: "get", local: true, class: "user-search-bar") do %>
-    <%= text_field_tag :username,
-                       nil,
-                       placeholder: "User Name to be Searched",
-                       pattern: ".{2,}",
-                       title: "Minimum 2 characters",
-                       class: "user-search-input"
-    %>
-    <% if user||flash[:alert] %>
-      <a href=<%=submit_path%> >
-        <%= image_submit_tag "close.png", title: "Clear Search", alt: "Cancel Search", class: "cancel-search"%>
-      </a>
-    <%end%>
-    <%= submit_tag :Search, data: {disable_with: "Searching..."}, class: "user-search-button" %>
-  <% end %>
-  <% if user %>
-    <%= render partial: "users/user_details",
-              locals: {
-                title: "",
-                role: user.role,
-                name: user.name,
-                redirect_path: submit_path,
-                in_manage_billers_page: true
-              } %>
+<%= form_with(url: submit_path, method: "get", local: true, class: "user-search-bar") do %>
+  <%= text_field_tag :username,
+                      nil,
+                      placeholder: "User Name to be Searched",
+                      pattern: ".{2,}",
+                      title: "Minimum 2 characters",
+                      class: "user-search-input"
+  %>
+  <% if user||flash[:alert] %>
+    <a href=<%=submit_path%> >
+      <%= image_submit_tag "close.png", title: "Clear Search", alt: "Cancel Search", class: "cancel-search"%>
+    </a>
   <%end%>
+  <%= submit_tag :Search, data: {disable_with: "Searching..."}, class: "user-search-button" %>
+<% end %>
+<% if user %>
+  <%= render partial: "users/user_details",
+            locals: {
+              title: "",
+              role: user.role,
+              name: user.name,
+              redirect_path: submit_path,
+              in_manage_billers_page: true
+            } %>
+<%end%>
