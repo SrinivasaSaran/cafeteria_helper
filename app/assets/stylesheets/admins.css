@@ -244,12 +244,12 @@
   margin-right: 20px;
   padding: 8px 0px;
   font-size: 20px;
-  grid-template-columns: 350px 500px 350px auto;
+  grid-template-columns: 350px 500px 350px 300px 100px 100px;
 }
 
-.search-user-data-icon-merge {
+.searchuser-data-icon-merge {
   display: grid;
-  grid-template-columns: 170px 60px 60px;
+  grid-template-columns: 170px 60px;
   align-items: center;
 }
 
@@ -259,4 +259,12 @@
 
 .list-users-details:hover {
   background-color: whitesmoke;
+}
+
+.list-users-details:hover .list-users-updateicon {
+  visibility: visible;
+}
+
+.list-users-updateicon {
+  visibility: hidden;
 }

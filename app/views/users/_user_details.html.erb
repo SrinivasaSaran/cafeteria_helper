@@ -1,33 +1,35 @@
 <% count = 0 %>
+<% loop_count = 0 %>
 <h2 class="list-users-title">
   <%= title %>
   <a href="/billers/new">
-    <%= image_submit_tag "plus.png", title: "Add/Make New Biller", class: "list-users-add-biller-icon" if role=="clerk" && in_manage_billers_page %>
+    <%= image_submit_tag "plus.png", title: "Add/Make New Biller", class: "list-users-add-biller-icon" if role=="clerk" && in_manage_billers_page && !name%>
   </a>
   <a href="/admins/managebillers">
     <%= submit_tag "Manage", class: "list-users-manage-biller-button" if role=="clerk" && !in_manage_billers_page %>
   </a>
 </h2>
-<% if name %>
-  <% User.order(:id).where("name = ?", name).each { |user| %>
+
+
+<% User.order(:id).where("role = ?", role).each do |user| %>
+<% loop_count+=1 if name %>
+<% user = User.find_by("name = ?", name) if name %>
+  <% if loop_count<=1 %>
     <div class="list-users-details">
-      <p><%= user.name %> (<%=user.role.capitalize%>)</p>
+      <p><%= "#{count += 1}. #{user.name}" if !name%><%= "#{user.name} (#{user.role.capitalize})" if name%></p>
       <p><%= user.address %></p>
       <p><%= user.email %></p>
-      <%= form_with(url: make_as_biller_path(redirect_path: redirect_path), method: "patch", class: "search-user-data-icon-merge") do %>
+      <%= form_with(url: make_as_biller_path(redirect_path: redirect_path), method: "patch", class: "searchuser-data-icon-merge") do %>
           <%= user.phone_no %>
           <%= hidden_field_tag :user_id, user.id %>
-          <%= image_submit_tag "swap.png", height: "24px", width: "35px", title: "Change role to Biller" if user.role=="customer" %>
+          <%= image_submit_tag "swap.png", height: "24px", width: "35px", data: {confirm: "Change User to Biller?"}, title: "Change role to Biller" if user.role=="customer" %>
+      <%end%>
+      <%= form_with(url: user_path(user.id, redirect_path: redirect_path), method: "put", class: "list-users-updateicon") do %>
+        <%= image_submit_tag "edit.png", height: "22px", width: "22px" if !(role=="customer") %>
+      <%end%>
+      <%= form_with(url: user_path(user.id, redirect_path: redirect_path), method: "delete", data: {confirm: "Are You sure in Deleting this User?"}, class: "list-users-updateicon") do %>
+        <%= image_submit_tag "trash-can-outline.png", height: "22px", width: "22px" if !(role=="admin")%>
       <%end%>
     </div>
-  <%}%>
-<%else%>
-  <% User.order(:id).where("role = ?", role).each { |user| %>
-    <div class="list-users-details">
-      <p><%= count += 1 %>. <%= user.name %></p>
-      <p><%= user.address %></p>
-      <p><%= user.email %></p>
-      <p><%= user.phone_no %></p>
-    </div>
-  <%}%>
+  <%end%>
 <%end%>

@@ -53,4 +53,9 @@ class UsersController < ApplicationController
     end
     redirect_to params[:redirect_path]
   end
+
+  def destroy
+    User.find(params[:id]).destroy
+    redirect_to params[:redirect_path]
+  end
 end

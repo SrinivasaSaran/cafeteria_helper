@@ -24,6 +24,7 @@
                 title: "Owner",
                 role: "admin",
                 name: nil,
+                redirect_path: users_path,
                 in_manage_billers_page: false
               } %>
     <%= render partial: "user_details",
@@ -31,6 +32,7 @@
                 title: "Biller",
                 role: "clerk",
                 name: nil,
+                redirect_path: users_path,
                 in_manage_billers_page: false
               } %>
     <%= render partial: "user_details",
@@ -38,6 +40,7 @@
                 title: "Customer",
                 role: "customer",
                 name: nil,
+                redirect_path: users_path,
                 in_manage_billers_page: false
               } %>
 

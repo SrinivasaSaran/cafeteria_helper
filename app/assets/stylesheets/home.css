@@ -3,8 +3,8 @@
 }
 
 .signup-page {
-  margin: 100px 0px;
-  margin-left: 100px;
+  margin: 100px auto;
+  max-width: 600px;
 }
 
 .signing-page-heading {
