@@ -36,4 +36,11 @@ class UsersController < ApplicationController
 
   def new
   end
+
+  def make_as_biller
+    if User.find(params[:user_id]).role == "customer"
+      User.find(params[:user_id]).update!(role: "clerk")
+    end
+    redirect_to params[:redirect_path]
+  end
 end

@@ -11,7 +11,11 @@
       <p><%= user.name %> (<%=user.role.capitalize%>)</p>
       <p><%= user.address %></p>
       <p><%= user.email %></p>
-      <p><%= user.phone_no %></p>
+      <%= form_with(url: make_as_biller_path(redirect_path: redirect_path), method: "patch", class: "search-user-data-icon-merge") do %>
+          <%= user.phone_no %>
+          <%= hidden_field_tag :user_id, user.id %>
+          <%= image_submit_tag "swap.png", height: "24px", width: "35px", title: "Change role to Biller" if user.role=="customer" %>
+      <%end%>
     </div>
   <%}%>
 <%else%>

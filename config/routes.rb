@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "/orders/pending", to: "orders#pending", as: :pending_orders
   get "admins/menus", to: "admins#manage_menus", as: :manage_menus
   get "admins/managebillers", to: "billers#manage_billers", as: :manage_billers
+  patch "users/makeasbiller", to: "users#make_as_biller", as: :make_as_biller
   resources :users
   resources :menus
   resources :orders

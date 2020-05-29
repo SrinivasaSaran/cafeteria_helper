@@ -207,11 +207,17 @@
 }
 
 .list-users-manage-biller-button {
-  padding: 6px 15px;
-  border: 1px solid sandybrown;
-  background-color: sandybrown;
+  padding: 6px 25px;
+  border: 1px solid silver;
+  background-color: silver;
+  border-radius: 20px;
   color: white;
   margin-left: 20px;
+}
+
+.list-users-manage-biller-button:hover {
+  border: 1px solid rgb(244, 96, 212);
+  background-color: rgb(244, 96, 212);
 }
 
 .list-users-details {
@@ -220,7 +226,13 @@
   margin-right: 20px;
   padding: 8px 0px;
   font-size: 20px;
-  grid-template-columns: 350px 500px 350px 200px;
+  grid-template-columns: 350px 500px 350px auto;
+}
+
+.search-user-data-icon-merge {
+  display: grid;
+  grid-template-columns: 170px 60px 60px;
+  align-items: center;
 }
 
 .list-users-details p {
