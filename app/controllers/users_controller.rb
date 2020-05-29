@@ -1,8 +1,14 @@
 class UsersController < ApplicationController
   skip_before_action :ensure_user_logged_in
-  before_action :ensure_admin, only: [:index]
+  before_action :ensure_admin, except: [:create, :new]
 
   def index
+    if params[:username]
+      @user = User.find_by(name: params[:username])
+      if !@user
+        flash.now[:alert] = "User not Found! Enter correct name"
+      end
+    end
   end
 
   def create

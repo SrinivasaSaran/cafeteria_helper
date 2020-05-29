@@ -7,5 +7,11 @@ class BillersController < ApplicationController
   end
 
   def manage_billers
+    if params[:username]
+      @user = User.find_by(name: params[:username])
+      if !@user
+        flash.now[:alert] = "User not Found! Enter correct name"
+      end
+    end
   end
 end

@@ -5,11 +5,22 @@
     <%= submit_tag "Manage", class: "list-users-manage-biller-button" if role=="clerk" && !in_manage_billers_page %>
   </a>
 </h2>
-<% User.order(:id).where("role = ?", role).each { |user| %>
-  <div class="list-users-details">
-    <p><%= count += 1 %>. <%= user.name %></p>
-    <p><%= user.address %></p>
-    <p><%= user.email %></p>
-    <p><%= user.phone_no %></p>
-  </div>
-<%}%>
+<% if name %>
+  <% User.order(:id).where("name = ?", name).each { |user| %>
+    <div class="list-users-details">
+      <p><%= user.name %> (<%=user.role.capitalize%>)</p>
+      <p><%= user.address %></p>
+      <p><%= user.email %></p>
+      <p><%= user.phone_no %></p>
+    </div>
+  <%}%>
+<%else%>
+  <% User.order(:id).where("role = ?", role).each { |user| %>
+    <div class="list-users-details">
+      <p><%= count += 1 %>. <%= user.name %></p>
+      <p><%= user.address %></p>
+      <p><%= user.email %></p>
+      <p><%= user.phone_no %></p>
+    </div>
+  <%}%>
+<%end%>

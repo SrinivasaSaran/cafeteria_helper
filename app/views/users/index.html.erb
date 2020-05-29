@@ -24,11 +24,15 @@
     </a>
   <% end %>
 
-
-  <%= render partial: "users/search_user",
-             locals: {
-               submit_path: "/users"
-             }%>
+  <section>
+    <%= render partial: "users/search_user",
+              locals: {
+                submit_path: users_path,
+                user: @user
+              }%>
+      <h3 class="flash-nouser"><%= flash[:alert] %></h3>
+      <hr/>
+    </section>
 
   <section class="list-users-section">
 
@@ -36,18 +40,21 @@
               locals: {
                 title: "Owner",
                 role: "admin",
+                name: nil,
                 in_manage_billers_page: false
               } %>
     <%= render partial: "user_details",
               locals: {
                 title: "Biller",
                 role: "clerk",
+                name: nil,
                 in_manage_billers_page: false
               } %>
     <%= render partial: "user_details",
               locals: {
                 title: "Customer",
                 role: "customer",
+                name: nil,
                 in_manage_billers_page: false
               } %>
 
