@@ -1,0 +1,17 @@
+<article class="signup-page">
+
+  <section>
+    <%= render partial: "admins/admins-navigator",
+              locals: {
+                current_page_name: ""
+              } %>
+  </section>
+
+  <h2 class="signing-page-heading">Biller Creation Form</h2>
+  <%= render partial: "users/create_user",
+             locals: {
+               role: "clerk",
+               button_text: "Create Biller"
+             } %>
+
+</article>

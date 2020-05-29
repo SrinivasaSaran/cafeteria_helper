@@ -1,6 +1,9 @@
 <% count = 0 %>
 <h2 class="list-users-title">
   <%= title %>
+  <a href="/billers/new">
+    <%= image_submit_tag "plus.png", title: "Add/Make New Biller", class: "list-users-add-biller-icon" if role=="clerk" && in_manage_billers_page %>
+  </a>
   <a href="/admins/managebillers">
     <%= submit_tag "Manage", class: "list-users-manage-biller-button" if role=="clerk" && !in_manage_billers_page %>
   </a>

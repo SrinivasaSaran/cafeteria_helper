@@ -187,6 +187,16 @@
   width: 25px;
 }
 
+.make-biller-button {
+  border: 1px solid rgb(150, 55, 150);
+  background-color: rgb(150, 55, 150);
+  border-radius: 4px;
+  margin-left: 60px;
+  padding: 10px 25px;
+  color: white;
+  font-size: 18px;
+}
+
 .flash-nouser {
   text-align: center;
   font-size: 20px;
@@ -205,6 +215,13 @@
   padding: 20px;
   font-size: 28px;
   align-items: center;
+}
+
+.list-users-add-biller-icon {
+  height: 32px;
+  width: 32px;
+  margin-left: 10px;
+  padding-top: 5px;
 }
 
 .list-users-manage-biller-button {

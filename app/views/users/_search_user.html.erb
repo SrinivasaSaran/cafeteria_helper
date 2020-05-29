@@ -12,7 +12,12 @@
     </a>
   <%end%>
   <%= submit_tag :Search, data: {disable_with: "Searching..."}, class: "user-search-button" %>
+  <a href="/billers/new">
+    <%= submit_tag "Make New Biller", class: "make-biller-button" if submit_path == manage_billers_path %>
+  </a>
 <% end %>
+
+
 <% if user %>
   <%= render partial: "users/user_details",
             locals: {

@@ -1,0 +1,54 @@
+<%= form_with(url: users_path, method: "post", class:"signing-section") do %>
+  <%= label_tag :name, "Name:", class:"signing-field-label"%><br>
+  <%= text_field_tag :name,
+                      nil,
+                      placeholder: "How you want to be called?",
+                      pattern: ".{2,}",
+                      title: "Minimum 2 characters",
+                      class: "signing-inputbar"
+  %><br><br>
+  <%= label_tag :email, "E-mail:", class:"signing-field-label"%><br>
+  <%= text_field_tag "email",
+                      nil,
+                      placeholder: "Your valid email Id",
+                      pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$",
+                      title: "Expected Pattern: yyy@yyy.yy",
+                      class: "signing-inputbar"
+  %><br><br>
+  <%= label_tag :address, "Address:", class:"signing-field-label"%><br>
+  <%= text_field_tag "address",
+                      nil,
+                      placeholder: "Where should we deliver you?",
+                      pattern: ".{10,150}",
+                      title: "In 10 to 150 characters",
+                      class: "signing-inputbar"
+  %><br><br>
+  <%= label_tag :phone_no, "Phone Number:", class:"signing-field-label"%><br>
+  <%= text_field_tag "phone_no",
+                      nil,
+                      placeholder: "Enter your valid Contact Number",
+                      pattern: "[0-9.+-].{9,50}",
+                      title: "To add multiple contact numbers use ', ' in between",
+                      class: "signing-inputbar"
+  %><br><br>
+  <%= hidden_field_tag :role, role %>
+  <%= label_tag :password_digest, "Password:", class:"signing-field-label"%><br>
+  <%= password_field_tag :password_digest,
+                          nil,
+                          placeholder: "Make your Password",
+                          pattern: ".{6,12}",
+                          title: "In 6 to 12 characters. It's advisable to use random passwords rather than easily guessable personal details like name, DOB, etc..",
+                          class: "signing-inputbar"
+  %><br><br>
+  <%= label_tag :password_confirmation_digest, "Confirm Password:", class:"signing-field-label"%><br>
+  <%= password_field_tag :password_confirmation_digest,
+                          nil,
+                          placeholder: "Confirm Your Password",
+                          pattern: ".{6,12}",
+                          title: "Enter same combination that you entered in 'Password' field",
+                          class: "signing-inputbar"
+  %>
+  <p class="flash-error"><%= flash[:error] %></p>
+  <p class="flash-error"><%= flash[:invalid] %></p>
+  <%= submit_tag button_text, data: {disable_with: "Creating...."}, class: "signing-button" %>
+<% end %>

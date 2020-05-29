@@ -14,4 +14,7 @@ class BillersController < ApplicationController
       end
     end
   end
+
+  def new
+  end
 end
