@@ -1,7 +1,9 @@
 <% count = 0 %>
 <h2 class="list-users-title">
   <%= title %>
-
+  <a href="/admins/managebillers">
+    <%= submit_tag "Manage", class: "list-users-manage-biller-button" if role=="clerk" && !in_manage_billers_page %>
+  </a>
 </h2>
 <% User.order(:id).where("role = ?", role).each { |user| %>
   <div class="list-users-details">

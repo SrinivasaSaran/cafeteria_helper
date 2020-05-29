@@ -1,14 +1,14 @@
 <article>
 
   <% content_for :admin_header do %>
+    <a href="/">
+      <%= submit_tag "Home", class:"admin-navigation-button" %>
+    </a>
     <%= form_with(url: user_role_change_path, method: "post") do %>
       <%= submit_tag "Walk-in Customer", class:"admin-navigation-button" %>
     <%end%>
     <a href="/">
       <%= submit_tag "Stats", class:"admin-navigation-button" %>
-    </a>
-    <a href="/admins/managebillers">
-      <%= submit_tag "Manage Billers", class:"admin-navigation-button" %>
     </a>
     <a href="/users">
       <%= submit_tag "Users", class:"admin-navigation-button" %>
@@ -24,15 +24,16 @@
     </a>
   <% end %>
 
-  <% if @orders.empty? %>
-     <h1 class="no-orders-title">No Pending Orders :)</h1>
-  <%else%>
-    <h1 class="orders-title">All Pending Orders</h1>
-    <%= render partial: "orders/generate-invoice",
-              locals: {
-                orders: @orders.order(:placed_at),
-                role: "admin"
-              } %>
-  <%end%>
+  <%= render partial: "users/search_user",
+             locals: {
+               submit_path: "/admins/managebillers"
+             } %>
+
+  <%= render partial: "users/user_details",
+             locals: {
+               title: "Billers",
+               role: "clerk",
+               in_manage_billers_page: true
+             } %>
 
 </article>

@@ -152,20 +152,67 @@
   margin-left: 75px;
 }
 
+.user-search-bar {
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-search-input {
+  width: 300px;
+  padding: 8px 10px;
+}
+
+.user-search-button {
+  border: 1px solid silver;
+  background-color: silver;
+  font-size: 18px;
+  color: white;
+  padding: 8px 20px;
+  margin-left: 40px;
+  border-radius: 5px;
+}
+
+.user-search-button:hover {
+  border: 1px solid rgb(192, 177, 44);
+  background-color: rgb(192, 177, 44);
+}
+
 .list-users-section {
-  margin: 50px 80px;
+  margin: 50px 0px;
+  margin-left: 80px;
 }
 
 .list-users-title {
+  display: flex;
   margin-top: 15px;
   padding: 20px;
   font-size: 28px;
+  align-items: center;
+}
+
+.list-users-manage-biller-button {
+  padding: 6px 15px;
+  border: 1px solid sandybrown;
+  background-color: sandybrown;
+  color: white;
+  margin-left: 20px;
 }
 
 .list-users-details {
   display: grid;
-  margin-left: 100px;
+  margin-left: 70px;
+  margin-right: 20px;
   padding: 8px 0px;
   font-size: 20px;
-  grid-template-columns: 350px 700px 350px 100px;
+  grid-template-columns: 350px 500px 350px 200px;
+}
+
+.list-users-details p {
+  margin-left: 20px;
+}
+
+.list-users-details:hover {
+  background-color: whitesmoke;
 }

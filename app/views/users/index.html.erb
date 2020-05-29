@@ -10,7 +10,7 @@
     <a href="/">
       <%= submit_tag "Stats", class:"admin-navigation-button" %>
     </a>
-    <a href="/">
+    <a href="/admins/managebillers">
       <%= submit_tag "Manage Billers", class:"admin-navigation-button" %>
     </a>
     <a href="/">
@@ -24,22 +24,31 @@
     </a>
   <% end %>
 
+
+  <%= render partial: "users/search_user",
+             locals: {
+               submit_path: "/users"
+             }%>
+
   <section class="list-users-section">
 
     <%= render partial: "user_details",
               locals: {
                 title: "Owner",
-                role: "admin"
+                role: "admin",
+                in_manage_billers_page: false
               } %>
     <%= render partial: "user_details",
               locals: {
-                title: "Billers",
-                role: "clerk"
+                title: "Biller",
+                role: "clerk",
+                in_manage_billers_page: false
               } %>
     <%= render partial: "user_details",
               locals: {
-                title: "Customers",
-                role: "customer"
+                title: "Customer",
+                role: "customer",
+                in_manage_billers_page: false
               } %>
 
   </section>

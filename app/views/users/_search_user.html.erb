@@ -1,0 +1,10 @@
+  <%= form_with(url: submit_path, method: "get", class: "user-search-bar") do %>
+    <%= text_field_tag :name,
+                       nil,
+                       placeholder: "User Name to be Searched",
+                       pattern: ".{2,}",
+                       title: "Minimum 2 characters",
+                       class: "user-search-input"
+    %>
+    <%= submit_tag :Search, data: {disable_with: "Searching..."}, class: "user-search-button" %>
+  <% end %>
