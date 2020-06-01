@@ -283,10 +283,18 @@
   border-radius: 10px;
 }
 
-.flash-updateuser {
+.flash-updateuser-failure {
   color: red;
-  font-size: 22px;
+  font-size: 24px;
   grid-column: 1/6;
   text-align: center;
-  padding: 20px 0px;
+  padding-bottom: 20px;
+}
+
+.flash-updateuser-success {
+  color: green;
+  font-size: 24px;
+  grid-column: 1/6;
+  text-align: center;
+  padding-bottom: 20px;
 }

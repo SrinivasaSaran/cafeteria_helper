@@ -2,8 +2,6 @@
   <%= text_field_tag :username,
                       nil,
                       placeholder: "User Name to be Searched",
-                      pattern: ".{2,}",
-                      title: "Minimum 2 characters",
                       class: "user-search-input"
   %>
   <% if user||flash[:alert] %>
@@ -26,7 +24,6 @@
               name: user.name,
               redirect_path: submit_path,
               user_id_to_edit: user_id_to_edit,
-              flash_notice: flash_notice,
               in_manage_billers_page: true
             } %>
 <%end%>

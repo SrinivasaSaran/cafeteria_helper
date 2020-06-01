@@ -27,9 +27,10 @@ class BillersController < ApplicationController
                email: params[:email],
                phone_no: params[:phone_no])
       if user
+        flash[:notice] = "Update Succesful:)"
         redirect_to params[:redirect_path]
       else
-        flash[:notice] = "Something went Wrong. While Updating Note that no field can be empty. Hover over the fields for more info."
+        flash[:invalid] = "Something went Wrong. While Updating Note that no field can be empty. Hover over the fields for more info."
         redirect_to params[:redirect_path]
       end
     end

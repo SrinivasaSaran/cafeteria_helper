@@ -11,7 +11,6 @@
 </h2>
 
 
-<h3 class="flash-updateuser"><%= flash_notice %></h3>
 <% User.order(:id).where("role = ?", role).each do |user| %>
 <% loop_count+=1 if name %>
 <% user = User.find_by("name = ?", name) if name %>
@@ -52,6 +51,7 @@
         <%end%>
         <%= form_with(url: redirect_path, method: "get", local: true, class: "list-users-updateicon") do %>
           <%= hidden_field_tag :user_id_to_edit, user.id %>
+          <%= hidden_field_tag :username, user.name if name %>
           <%= image_submit_tag "edit.png", height: "22px", width: "22px", title: "Edit User Details" if !(role=="customer") %>
         <%end%>
         <%= form_with(url: user_path(user.id, redirect_path: redirect_path), method: "delete", data: {confirm: "Are You sure in Deleting this User?"}, class: "list-users-updateicon") do %>
