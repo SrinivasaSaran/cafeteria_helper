@@ -11,6 +11,8 @@
     <%= render partial: "users/search_user",
               locals: {
                 submit_path: users_path,
+                user_id_to_edit: @user_id_to_edit,
+                flash_notice: flash[:notice],
                 user: @user
               }%>
       <h3 class="flash-nouser"><%= flash[:alert] %></h3>
@@ -25,6 +27,8 @@
                 role: "admin",
                 name: nil,
                 redirect_path: users_path,
+                user_id_to_edit: @user_id_to_edit,
+                flash_notice: flash[:notice],
                 in_manage_billers_page: false
               } %>
     <%= render partial: "user_details",
@@ -33,6 +37,8 @@
                 role: "clerk",
                 name: nil,
                 redirect_path: users_path,
+                user_id_to_edit: @user_id_to_edit,
+                flash_notice: flash[:notice],
                 in_manage_billers_page: false
               } %>
     <%= render partial: "user_details",
@@ -41,6 +47,8 @@
                 role: "customer",
                 name: nil,
                 redirect_path: users_path,
+                user_id_to_edit: nil,
+                flash_notice: flash[:notice],
                 in_manage_billers_page: false
               } %>
 

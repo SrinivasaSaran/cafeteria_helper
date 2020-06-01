@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :ensure_admin, except: [:create, :new]
 
   def index
+    @user_id_to_edit = nil
+    @user_id_to_edit = params[:user_id_to_edit].to_i if params[:user_id_to_edit]
     if params[:username]
       @user = User.find_by(name: params[:username])
       if !@user

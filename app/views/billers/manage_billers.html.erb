@@ -11,6 +11,8 @@
     <%= render partial: "users/search_user",
               locals: {
                 submit_path: manage_billers_path,
+                user_id_to_edit: @user_id_to_edit,
+                flash_notice: flash[:notice],
                 user: @user
               } %>
     <h3 class="flash-nouser"><%= flash[:alert] %></h3>
@@ -24,6 +26,8 @@
                 role: "clerk",
                 name: nil,
                 redirect_path: manage_billers_path,
+                user_id_to_edit: @user_id_to_edit,
+                flash_notice: flash[:notice],
                 in_manage_billers_page: true
               } %>
   </section>

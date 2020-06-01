@@ -11,25 +11,53 @@
 </h2>
 
 
+<h3 class="flash-updateuser"><%= flash_notice %></h3>
 <% User.order(:id).where("role = ?", role).each do |user| %>
 <% loop_count+=1 if name %>
 <% user = User.find_by("name = ?", name) if name %>
   <% if loop_count<=1 %>
-    <div class="list-users-details">
-      <p><%= "#{count += 1}. #{user.name}" if !name%><%= "#{user.name} (#{user.role.capitalize})" if name%></p>
-      <p><%= user.address %></p>
-      <p><%= user.email %></p>
-      <%= form_with(url: make_as_biller_path(redirect_path: redirect_path), method: "patch", class: "searchuser-data-icon-merge") do %>
-          <%= user.phone_no %>
-          <%= hidden_field_tag :user_id, user.id %>
-          <%= image_submit_tag "swap.png", height: "24px", width: "35px", data: {confirm: "Change User to Biller?"}, title: "Change role to Biller" if user.role=="customer" %>
-      <%end%>
-      <%= form_with(url: user_path(user.id, redirect_path: redirect_path), method: "put", class: "list-users-updateicon") do %>
-        <%= image_submit_tag "edit.png", height: "22px", width: "22px" if !(role=="customer") %>
-      <%end%>
-      <%= form_with(url: user_path(user.id, redirect_path: redirect_path), method: "delete", data: {confirm: "Are You sure in Deleting this User?"}, class: "list-users-updateicon") do %>
-        <%= image_submit_tag "trash-can-outline.png", height: "22px", width: "22px" if !(role=="admin")%>
-      <%end%>
-    </div>
+    <%if user_id_to_edit==user.id%>
+      <div>
+        <%= form_with(url: "/billers/#{user.id}", method: "patch", class: "list-users-details") do %>
+          <%count+=1%>
+          <%= hidden_field_tag :redirect_path, redirect_path %>
+          <p><%= text_field_tag :name, user.name,
+                                placeholder: "User's Name",
+                                class: "updateuser-field",
+                                title: "Name. If all instructions given in flash messages are followed and yet error pops, Username is already taken" %></p>
+          <p><%= text_field_tag :address, user.address,
+                                placeholder: "User's Address",
+                                pattern: ".{9,}", class: "updateuser-field",
+                                title: "Address. Minimum 10 characters" %></p>
+          <p><%= text_field_tag :email, user.email,
+                                placeholder: "User's email",
+                                class: "updateuser-field",
+                                title: "Email. If all instructions given in flash messages are followed and yet error pops, Email-id is already taken" %></p>
+          <p><%= text_field_tag :phone_no, user.phone_no,
+                                placeholder: "User's Phone Number",
+                                pattern: ".{10,}", class: "updateuser-field",
+                                title: "Enter valid Contact Detail" %></p>
+          <%= submit_tag "Update", data: {disable_with: "Updating..."}, class: "updateuser-button" %>
+        <%end%>
+      </div>
+    <%else%>
+      <div class="list-users-details">
+        <p><%= "#{count += 1}. #{user.name}" if !name%><%= "#{user.name} (#{user.role.capitalize})" if name%></p>
+        <p><%= user.address %></p>
+        <p><%= user.email %></p>
+        <%= form_with(url: make_as_biller_path(redirect_path: redirect_path), method: "patch", class: "searchuser-data-icon-merge") do %>
+            <%= user.phone_no %>
+            <%= hidden_field_tag :user_id, user.id %>
+            <%= image_submit_tag "swap.png", height: "24px", width: "35px", data: {confirm: "Change User to Biller?"}, title: "Change role to Biller" if user.role=="customer" %>
+        <%end%>
+        <%= form_with(url: redirect_path, method: "get", local: true, class: "list-users-updateicon") do %>
+          <%= hidden_field_tag :user_id_to_edit, user.id %>
+          <%= image_submit_tag "edit.png", height: "22px", width: "22px", title: "Edit User Details" if !(role=="customer") %>
+        <%end%>
+        <%= form_with(url: user_path(user.id, redirect_path: redirect_path), method: "delete", data: {confirm: "Are You sure in Deleting this User?"}, class: "list-users-updateicon") do %>
+          <%= image_submit_tag "trash-can-outline.png", height: "22px", width: "22px", title: "Delete User" if !(role=="admin")%>
+        <%end%>
+      </div>
+    <%end%>
   <%end%>
 <%end%>

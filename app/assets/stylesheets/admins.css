@@ -244,7 +244,7 @@
   margin-right: 20px;
   padding: 8px 0px;
   font-size: 20px;
-  grid-template-columns: 350px 500px 350px 300px 100px 100px;
+  grid-template-columns: 350px 500px 350px 280px 100px 100px;
 }
 
 .searchuser-data-icon-merge {
@@ -267,4 +267,26 @@
 
 .list-users-updateicon {
   visibility: hidden;
+}
+
+.updateuser-field {
+  padding: 6px 10px;
+  width: 150px;
+}
+
+.updateuser-button {
+  padding: 10px 20px;
+  color: white;
+  border: 1px solid rgb(212, 11, 196);
+  background-color: rgb(212, 11, 196);
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+.flash-updateuser {
+  color: red;
+  font-size: 22px;
+  grid-column: 1/6;
+  text-align: center;
+  padding: 20px 0px;
 }
