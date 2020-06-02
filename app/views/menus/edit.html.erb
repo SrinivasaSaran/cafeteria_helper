@@ -32,7 +32,7 @@
       <h4><%= item.name %></h4>
       <p><%= item.description %></p>
       <p class="manage-menuitem-price">Rs.<%= item.price %></p>
-      <%= link_to("/") do %>
+      <%= form_with(url: "",method: "") do %>
         <%= image_submit_tag "edit.png", title: "Tap to Update Menuitems", class: "menuitem-icon" %>
       <%end%>
       <%= form_with(url: "/menu_items/#{item.id}", method: "delete") do %>

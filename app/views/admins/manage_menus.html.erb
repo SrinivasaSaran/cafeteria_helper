@@ -16,23 +16,42 @@
 
   <h4 class="managemenus-flash-error"><%= flash[:error] %></h4>
   <h4 class="managemenus-flash-error"><%= flash[:invalid] %></h4>
+  <h4 class="flash-updatemenuname-success"><%= flash[:notice] %></h4>
 
   <% Menu.order(:id).each { |menu| %>
-    <div  class="menu-details">
-      <%= form_with(url: "/menus/#{menu.id}", method: "patch") do %>
-        <%= image_submit_tag "menu-active.png", title: "Click here to make this Menu Inactive" if menu.active_status%>
-        <%= image_submit_tag "menu-inactive.png", title: "Click here to make this Menu Active" if !menu.active_status%>
+    <% if @menu_id_to_edit==menu.id %>
+      <%= form_with(url: change_menu_name_path, method: "patch", class: "menu-details") do %>
+        <p> </p>
+        <%= hidden_field_tag :menu_id, menu.id %>
+        <%= text_field_tag :name, menu.name, pattern: ".{2,50}",
+                           title: "In 2 to 50 letters. If none of mentioned error is done by you and yet error pops, then Name is already taken",
+                           class: "update-menuname" %>
+        <%= submit_tag "Change Name", data: {disable_with: "Changing..."}, class: "update-menuname-button" %>
+        <p> </p>
+        <p> </p>
       <%end%>
-      <h3 class="menu-name"><%= menu.name %></h3>
-      <%= submit_tag :Active, disabled: true, class: "menu-true-status" if menu.active_status%>
-      <%= submit_tag :InActive, disabled: true, class: "menu-false-status" if !menu.active_status%>
-      <%= link_to("/menus/#{menu.id}/edit") do %>
-        <%= image_submit_tag "edit.png", title: "Tap to Update Menuitems", class: "menu-icon" %>
-      <%end%>
-      <%= form_with(url: "/menus/#{menu.id}", method: "delete") do %>
-        <%= image_submit_tag "trash-can.png", title: "Tap to Delete Menu", data: {confirm: "Delete this Menu?"}, class: "menu-icon" %>
-      <%end%>
-    </div>
+      <h4 class="flash-updatemenuname-failure"><%= flash[:alert] %></h4>
+    <%else%>
+      <div class="menu-details">
+        <%= form_with(url: "/menus/#{menu.id}", method: "patch") do %>
+          <%= image_submit_tag "menu-active.png", title: "Click here to make this Menu Inactive" if menu.active_status%>
+          <%= image_submit_tag "menu-inactive.png", title: "Click here to make this Menu Active" if !menu.active_status%>
+        <%end%>
+        <%= form_with(url: manage_menus_path, method: "get", local: true, class: "menu-name") do %>
+          <%= menu.name %>
+          <%= hidden_field_tag :menu_id_to_edit, menu.id %>
+          <%= image_submit_tag "edit.png", title: "Tap to Change Menu Name", class: "menu-icon" %>
+        <%end%>
+        <%= submit_tag :Active, disabled: true, class: "menu-true-status" if menu.active_status%>
+        <%= submit_tag :InActive, disabled: true, class: "menu-false-status" if !menu.active_status%>
+        <%= link_to("/menus/#{menu.id}/edit") do %>
+          <%= image_submit_tag "plus.png", title: "Tap to Update Menu", class: "menu-icon" %>
+        <%end%>
+        <%= form_with(url: "/menus/#{menu.id}", method: "delete") do %>
+          <%= image_submit_tag "trash-can.png", title: "Tap to Delete Menu", data: {confirm: "Delete this Menu?"}, class: "menu-icon" %>
+        <%end%>
+      </div>
+    <%end%>
   <%}%>
 
 </article>

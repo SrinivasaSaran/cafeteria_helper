@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "admins/menus", to: "admins#manage_menus", as: :manage_menus
   get "admins/managebillers", to: "billers#manage_billers", as: :manage_billers
   patch "users/makeasbiller", to: "users#make_as_biller", as: :make_as_biller
+  patch "admins/change_menu_mane", to: "menus#change_name", as: :change_menu_name
   resources :users
   resources :menus
   resources :orders

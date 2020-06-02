@@ -37,12 +37,43 @@
   background-color: white;
   align-items: center;
   justify-content: center;
-  grid-template-columns: 40px 400px 80px auto auto;
+  grid-template-columns: 40px 500px 80px auto auto;
+}
+
+.update-menuname {
+  width: 250px;
+  padding: 7px 10px;
+  font-size: 18px;
+}
+
+.update-menuname-button {
+  width: 200px;
+  border: 1px solid rgb(212, 11, 196);
+  background-color: rgb(212, 11, 196);
+  color: white;
+  padding: 7px 20px;
+  font-size: 18px;
+  border-radius: 6px;
+}
+
+.flash-updatemenuname-success {
+  color: green;
+  font-size: 22px;
+  text-align: center;
+}
+
+.flash-updatemenuname-failure {
+  color: red;
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .menu-name {
   font-size: 22px;
   padding: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .menu-true-status {
@@ -286,7 +317,6 @@
 .flash-updateuser-failure {
   color: red;
   font-size: 24px;
-  grid-column: 1/6;
   text-align: center;
   padding-bottom: 20px;
 }
@@ -294,7 +324,6 @@
 .flash-updateuser-success {
   color: green;
   font-size: 24px;
-  grid-column: 1/6;
   text-align: center;
   padding-bottom: 20px;
 }
