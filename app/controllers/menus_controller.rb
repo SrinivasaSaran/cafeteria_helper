@@ -20,6 +20,7 @@ class MenusController < ApplicationController
 
   def edit
     @menu_id_to_edit = params[:menu_id_to_edit].to_i if params[:menu_id_to_edit]
+    @menuitem_id_to_edit = params[:menuitem_id_to_edit].to_i if params[:menuitem_id_to_edit]
   end
 
   def update

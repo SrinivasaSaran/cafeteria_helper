@@ -18,6 +18,7 @@
         <%= hidden_field_tag :error_route, edit_menu_path(menu_id_to_edit: params[:id]) %>
         <%= text_field_tag :name, Menu.find(params[:id]).name, pattern: ".{2,50}",
                           title: "In 2 to 50 letters. If none of mentioned error is done by you and yet error pops, then Name is already taken",
+                          placeholder: "Menu Name",
                           class: "update-menuname" %>
         <%= submit_tag "Change Name", data: {disable_with: "Changing..."}, class: "update-menuname-button" %>
       <%end%>
@@ -39,25 +40,48 @@
   <%end%>
 
   <h4 class="flasherror-addmenuitem"><%= flash[:error] %></h4>
+  <h4 class="flash-updatemenuname-success"><%= flash[:success] %></h4>
 
-  <% Menu.find(params[:id]).menu_items.order(:active_status).reverse.each{ |item| %>
-    <div class="menuitem-section">
-      <%= form_with(url: menu_item_path(id: item.id), method: "patch") do %>
+  <% Menu.find(params[:id]).menu_items.order(:active_status).order(:id).reverse.each{ |item| %>
+    <% if @menuitem_id_to_edit==item.id %>
+
+      <%= form_with(url: menu_item_path(item.id), method: "patch", class: "menuitem-section") do %>
+        <p> </p>
         <%= hidden_field_tag :menu_id, params[:id] %>
-        <%= image_submit_tag "menu-active.png", title: "Click here to make this Item Inactive" if item.active_status%>
-        <%= image_submit_tag "menu-inactive.png", title: "Click here to make this Item Active" if !item.active_status%>
+        <%= text_field_tag "name", item.name, placeholder: "Name of the Item",
+                           pattern: ".{3,}", class: "update-menuitem-input",
+                           title: "Minimum 3 Characters. If none of mentioned error is done by you and yet error pops, then Name is already taken" %>
+        <%= text_field_tag :description, item.description, placeholder: "Describe about the Item",
+                           pattern: ".{3,}", class: "update-menuitem-input",
+                           title: "Minimum 3 Characters" %>
+        <%= number_field_tag :price, item.price, placeholder: "Item's Price", min: 0, step: 0.01, class: "update-menuitem-input", title: "Item's Price" %>
+        <%= submit_tag "Update", data: {disable_with: "Updating..."}, class: "update-menuitem-button" %>
+        <p> </p>
       <%end%>
-      <h4><%= item.name %></h4>
-      <p><%= item.description %></p>
-      <p class="manage-menuitem-price">Rs.<%= item.price %></p>
-      <%= form_with(url: "",method: "") do %>
-        <%= image_submit_tag "edit.png", title: "Tap to Update Menuitems", class: "menuitem-icon" %>
-      <%end%>
-      <%= form_with(url: "/menu_items/#{item.id}", method: "delete") do %>
-        <%= hidden_field_tag :menu_id, params[:id] %>
-        <%= image_submit_tag "trash-can.png", title: "Tap to Delete Menu", data: {confirm: "Delete this Menu?"}, class: "menuitem-icon" %>
-      <%end%>
-    </div>
+      <h4 class="flash-updatemenuname-failure"><%= flash[:failure] %></h4>
+
+    <%else%>
+
+      <div class="menuitem-section">
+        <%= form_with(url: change_menuitem_status_path(id: item.id), method: "patch") do %>
+          <%= hidden_field_tag :menu_id, params[:id] %>
+          <%= image_submit_tag "menu-active.png", title: "Click here to make this Item Inactive" if item.active_status%>
+          <%= image_submit_tag "menu-inactive.png", title: "Click here to make this Item Active" if !item.active_status%>
+        <%end%>
+        <h4><%= item.name %></h4>
+        <p><%= item.description %></p>
+        <p class="manage-menuitem-price">Rs.<%= item.price %></p>
+        <%= form_with(url: edit_menu_path, method: "get", local: true) do %>
+          <%= hidden_field_tag :menuitem_id_to_edit, item.id %>
+          <%= image_submit_tag "edit.png", title: "Tap to Update Menuitems", class: "menuitem-icon" %>
+        <%end%>
+        <%= form_with(url: "/menu_items/#{item.id}", method: "delete") do %>
+          <%= hidden_field_tag :menu_id, params[:id] %>
+          <%= image_submit_tag "trash-can.png", title: "Tap to Delete Menu", data: {confirm: "Delete this Menu?"}, class: "menuitem-icon" %>
+        <%end%>
+      </div>
+
+    <%end%>
   <%}%>
 
 </article>

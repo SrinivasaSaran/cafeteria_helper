@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :ensure_user_logged_in
-  add_flash_types :error, :invalid
+  add_flash_types :error, :invalid, :success, :failure
 
   def ensure_user_logged_in
     original_user
