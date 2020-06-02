@@ -7,8 +7,35 @@
               } %>
   </section>
 
-  <title>
-    <%=  %>
-  </title>
+  <%= form_with(url: stats_path, method: "get", local: true, class:"stats-filter-bar") do %>
+    <%= label_tag :from_date, "From Date: ", class: "stats-filter-label" %>
+    <%= date_field_tag :from_date, @from_date, class: "stats-filter-input" %>
+    <%= label_tag :to_date, "To Date: ", class: "stats-filter-label" %>
+    <%= date_field_tag :to_date, @to_date, class: "stats-filter-input" %>
+    <%= label_tag :username, "User Name: ", class: "stats-filter-label" %>
+    <%= text_field_tag :username, @username, placeholder: "Name of User to fetch Reports", class: "stats-filter-input" %>
+    <%= submit_tag "Apply Filter", data: {disable_with: "Fetching..."}, class: "stats-filter-button" %>
+  <%end%>
+
+  <h3 class="stats-title">Invoices</h3>
+
+  <section>
+    <% if @invoices.empty? %>
+      <p class="stat-noinvoice-msg">No Invoice found for Applied Filter:(</p>
+    <%else%>
+      <% @invoices.order(:placed_at).each { |invoice| %>
+        <div class="stat-invoice">
+          <% role = invoice.user.role %>
+          <p>ID: <%= invoice.id %></p>
+          <p>
+            Name: <%= invoice.user.name if role=="customer"%>
+            <%= "#{invoice.user.name} (Clerk)" if role=="clerk"%>
+            <%= "#{invoice.user.name} (Admin)" if role=="admin"%>
+          </p>
+          <p>Total: Rs.<%= invoice.total_amount %></p>
+        </div>
+      <%}%>
+    <%end%>
+  </section>
 
 </article>
