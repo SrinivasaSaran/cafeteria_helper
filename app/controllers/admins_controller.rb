@@ -6,7 +6,6 @@ class AdminsController < ApplicationController
   end
 
   def manage_menus
-    @menu_id_to_edit = nil
     @menu_id_to_edit = params[:menu_id_to_edit].to_i if params[:menu_id_to_edit]
   end
 

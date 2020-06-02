@@ -20,9 +20,12 @@
 
   <% Menu.order(:id).each { |menu| %>
     <% if @menu_id_to_edit==menu.id %>
+
       <%= form_with(url: change_menu_name_path, method: "patch", class: "menu-details") do %>
         <p> </p>
         <%= hidden_field_tag :menu_id, menu.id %>
+        <%= hidden_field_tag :success_route, manage_menus_path %>
+        <%= hidden_field_tag :error_route, manage_menus_path(menu_id_to_edit: menu.id) %>
         <%= text_field_tag :name, menu.name, pattern: ".{2,50}",
                            title: "In 2 to 50 letters. If none of mentioned error is done by you and yet error pops, then Name is already taken",
                            class: "update-menuname" %>
@@ -31,7 +34,9 @@
         <p> </p>
       <%end%>
       <h4 class="flash-updatemenuname-failure"><%= flash[:alert] %></h4>
+
     <%else%>
+
       <div class="menu-details">
         <%= form_with(url: "/menus/#{menu.id}", method: "patch") do %>
           <%= image_submit_tag "menu-active.png", title: "Click here to make this Menu Inactive" if menu.active_status%>
@@ -51,6 +56,7 @@
           <%= image_submit_tag "trash-can.png", title: "Tap to Delete Menu", data: {confirm: "Delete this Menu?"}, class: "menu-icon" %>
         <%end%>
       </div>
+
     <%end%>
   <%}%>
 

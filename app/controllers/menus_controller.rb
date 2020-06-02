@@ -19,6 +19,7 @@ class MenusController < ApplicationController
   end
 
   def edit
+    @menu_id_to_edit = params[:menu_id_to_edit].to_i if params[:menu_id_to_edit]
   end
 
   def update
@@ -33,11 +34,11 @@ class MenusController < ApplicationController
   def change_name
     menu = Menu.find(params[:menu_id]).update(name: params[:name])
     if menu
-      flash[:notice] = "Change Succesful:)"
-      redirect_to manage_menus_path
+      flash[:notice] = "Menu Name Change Succesful:)"
+      redirect_to params[:success_route]
     else
-      flash[:alert] = "Something went Wrong. Please note that Name can't be Empty. Hover over the field for more Info"
-      redirect_to manage_menus_path(menu_id_to_edit: params[:menu_id])
+      flash[:alert] = "Something went Wrong. Please note that Menu Name can't be Empty. Hover over the field for more Info"
+      redirect_to params[:error_route]
     end
   end
 

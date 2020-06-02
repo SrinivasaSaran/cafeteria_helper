@@ -7,9 +7,27 @@
               } %>
   </section>
 
+
+  <h4 class="flash-updatemenuname-success"><%= flash[:notice] %></h4>
+  <h4 class="flash-updatemenuname-failure"><%= flash[:alert] %></h4>
   <h3 class="updatemenu-title">
-    <%= Menu.find(params[:id]).name %>
-    <%= image_submit_tag "edit.png", class: "menuname-edit-icon" %>
+    <% if @menu_id_to_edit %>
+      <%= form_with(url: change_menu_name_path, method: "patch") do %>
+        <%= hidden_field_tag :menu_id, params[:id] %>
+        <%= hidden_field_tag :success_route, edit_menu_path %>
+        <%= hidden_field_tag :error_route, edit_menu_path(menu_id_to_edit: params[:id]) %>
+        <%= text_field_tag :name, Menu.find(params[:id]).name, pattern: ".{2,50}",
+                          title: "In 2 to 50 letters. If none of mentioned error is done by you and yet error pops, then Name is already taken",
+                          class: "update-menuname" %>
+        <%= submit_tag "Change Name", data: {disable_with: "Changing..."}, class: "update-menuname-button" %>
+      <%end%>
+    <%else%>
+      <%= Menu.find(params[:id]).name %>
+      <%= form_with(url: edit_menu_path(params[:id]), method: "get", local: true) do %>
+        <%= hidden_field_tag :menu_id_to_edit, params[:id] %>
+        <%= image_submit_tag "edit.png", title: "Tap to Change Menu Name", class: "menuname-edit-icon" %>
+      <%end%>
+    <%end%>
   </h3>
 
   <%= form_with(url: menu_items_path, method: "post", class: "addmenuitem-inputbar") do %>
