@@ -327,6 +327,8 @@
   background-color: rgb(212, 11, 196);
   font-size: 20px;
   border-radius: 10px;
+  width: 150px;
+  grid-column: 5/6;
 }
 
 .flash-updateuser-failure {

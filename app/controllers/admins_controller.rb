@@ -9,6 +9,9 @@ class AdminsController < ApplicationController
     @menu_id_to_edit = params[:menu_id_to_edit].to_i if params[:menu_id_to_edit]
   end
 
+  def stats
+  end
+
   def role_change
     if User.find(session[:current_user_id]).role == "clerk" || User.find(session[:current_user_id]).role == "admin"
       session[:original_order_id] = session[:current_order_id]

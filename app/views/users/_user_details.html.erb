@@ -47,7 +47,8 @@
         <%= form_with(url: make_as_biller_path(redirect_path: redirect_path), method: "patch", class: "searchuser-data-icon-merge") do %>
             <%= user.phone_no %>
             <%= hidden_field_tag :user_id, user.id %>
-            <%= image_submit_tag "swap.png", height: "24px", width: "35px", data: {confirm: "Change User to Biller?"}, title: "Change role to Biller" if user.role=="customer" %>
+            <%= image_submit_tag "swap.png", height: "24px", width: "35px", data: {confirm: "Change User to Biller?"}, title: "Change role to Biller" if user.role=="customer" && user.name!="Walk-in Customer" %>
+            <%= image_submit_tag "swap.png", height: "24px", width: "35px", data: {confirm: "Change User to Customer?"}, title: "Change role to Customer" if user.role=="clerk" %>
         <%end%>
         <%= form_with(url: redirect_path, method: "get", local: true, class: "list-users-updateicon") do %>
           <%= hidden_field_tag :user_id_to_edit, user.id %>

@@ -6,7 +6,7 @@
   <%= form_with(url: user_role_change_path, method: "post") do %>
     <%= submit_tag "Walk-in Customer", class:"admin-navigation-button" %>
   <%end%>
-  <a href="/">
+  <a href="/admins/stats">
     <%= submit_tag "Stats", class:"admin-navigation-button" if !(current_page_name == "Stats") %>
     <%= submit_tag "Stats", class:"present-admin-navigation-button" if current_page_name == "Stats" %>
   </a>
