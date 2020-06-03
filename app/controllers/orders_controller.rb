@@ -1,6 +1,12 @@
 class OrdersController < ApplicationController
+  before_action :ensure_admin, only: [:show]
+
   def index
     @orders = Order.placed_orders(session[:current_user_id])
+  end
+
+  def show
+    @order = Order.where(id: params[:id])
   end
 
   def pending

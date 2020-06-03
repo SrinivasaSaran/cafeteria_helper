@@ -24,7 +24,9 @@
       <p class="stat-noinvoice-msg">No Invoice found for Applied Filter:(</p>
     <%else%>
       <% @invoices.order(:placed_at).each { |invoice| %>
-        <div class="stat-invoice">
+        <%= form_with(url: order_path(id: invoice.id), method: "get", local: true, class: "stat-invoice") do %>
+          <%= image_submit_tag "ok-certification.png", height: "28px", width: "28px", title: "Order Delivered", disabled: true if invoice.delivered_at%>
+          <%= image_submit_tag "menu-inactive.png", height: "28px", width: "28px", title: "Order Delivery Pending", disabled: true if !invoice.delivered_at%>
           <% role = invoice.user.role %>
           <p>ID: <%= invoice.id %></p>
           <p>
@@ -33,7 +35,8 @@
             <%= "#{invoice.user.name} (Admin)" if role=="admin"%>
           </p>
           <p>Total: Rs.<%= invoice.total_amount %></p>
-        </div>
+          <%= image_submit_tag "right-arrow.png", title: "Click to view Full Detail" %>
+        <%end%>
       <%}%>
     <%end%>
   </section>

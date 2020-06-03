@@ -1,0 +1,18 @@
+<article>
+
+  <section>
+    <%= render partial: "admins/admins-navigator",
+              locals: {
+                current_page_name: ""
+              } %>
+  </section>
+
+
+  <h1 class="orders-title">Individual Order</h1>
+  <%= render partial: "generate-invoice",
+              locals: {
+                orders: @order,
+                role: "admin"
+              } %>
+
+</article>

@@ -396,9 +396,10 @@
   font-size: 20px;
   margin: 30px 100px;
   justify-content: center;
+  align-items: center;
   padding: 35px 10px;
   background-color: rgba(112, 192, 59, 0.295);
-  grid-template-columns: 200px 400px 200px;
+  grid-template-columns: 100px 200px 400px 200px 100px;
 }
 
 .stat-invoice:hover {
