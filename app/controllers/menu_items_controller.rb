@@ -7,7 +7,7 @@ class MenuItemsController < ApplicationController
       description: params[:description],
       menu_id: params[:menu_id],
       price: params[:price],
-      active_status: false,
+      active_status: true,
     )
     if item.valid?
       redirect_to edit_menu_path(params[:menu_id])

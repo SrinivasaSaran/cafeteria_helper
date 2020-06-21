@@ -21,6 +21,8 @@ class HomeController < ApplicationController
       end
       session[:current_user_id] = user.id
       session[:current_order_id] = order.id
+      session[:original_user_id] = nil
+      session[:original_order_id] = nil
       redirect_to "/"
     else
       redirect_to root_path, error: "Credentials doesn't Match. Try again!"
@@ -31,15 +33,15 @@ class HomeController < ApplicationController
   end
 
   def destroy
-    Order.find(session[:current_order_id]).order_items.destroy_all
-    Order.find(session[:current_order_id]).destroy
-    if session[:original_order_id]
-      Order.find(session[:original_order_id]).order_items.destroy_all
-      Order.find(session[:original_order_id]).destroy
+    Order.find(session_current_order_id).order_items.destroy_all
+    Order.find(session_current_order_id).destroy
+    if session_original_order_id
+      Order.find(session_original_order_id).order_items.destroy_all
+      Order.find(session_original_order_id).destroy
     end
-    if session[:walkin_order_id]
-      Order.find(session[:walkin_order_id]).order_items.destroy_all
-      Order.find(session[:walkin_order_id]).destroy
+    if session_walkin_order_id
+      Order.find(session_walkin_order_id).order_items.destroy_all
+      Order.find(session_walkin_order_id).destroy
     end
     reset_session
     @current_user = nil

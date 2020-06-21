@@ -55,7 +55,7 @@
           <%= hidden_field_tag :username, user.name if name %>
           <%= image_submit_tag "edit.png", height: "22px", width: "22px", title: "Edit User Details" if !(role=="customer") %>
         <%end%>
-        <%= form_with(url: user_path(user.id, redirect_path: redirect_path), method: "delete", data: {confirm: "Are You sure in Deleting this User?"}, class: "list-users-updateicon") do %>
+        <%= form_with(url: user_path(user.id, redirect_path: redirect_path), method: "delete", data: {confirm: "Deleting this User will delete all orders related to that user \nAre u sure to Proceed? "}, class: "list-users-updateicon") do %>
           <%= image_submit_tag "trash-can-outline.png", height: "22px", width: "22px", title: "Delete User" if !(role=="admin")%>
         <%end%>
       </div>

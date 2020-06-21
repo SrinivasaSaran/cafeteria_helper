@@ -60,6 +60,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    User.find(params[:id]).orders.destroy_all
     User.find(params[:id]).destroy
     redirect_to params[:redirect_path]
   end

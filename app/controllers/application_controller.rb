@@ -44,4 +44,16 @@ class ApplicationController < ActionController::Base
       nil
     end
   end
+
+  def session_current_order_id
+    session[:current_order_id]
+  end
+
+  def session_original_order_id
+    session[:original_order_id]
+  end
+
+  def session_walkin_order_id
+    session[:walkin_order_id]
+  end
 end

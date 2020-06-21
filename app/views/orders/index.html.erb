@@ -22,7 +22,7 @@
     <h1 class="orders-title">All  Orders</h1>
     <%= render partial: "generate-invoice",
               locals: {
-                orders: @orders.order(:id),
+                orders: @orders.order(id: :desc),
                 role: "customer"
               } %>
   <%end%>

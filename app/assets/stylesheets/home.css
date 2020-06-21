@@ -1,5 +1,5 @@
 .home-page {
-  padding: 100px 0px 0px 100px;
+  padding: 100px 0px 20px 100px;
 }
 
 .signup-page {
@@ -45,7 +45,7 @@
 }
 
 .about-me {
-  padding: 300px 0px;
+  padding: 200px 0px;
   font-size: 50px;
   text-align: center;
   color: rgb(38, 187, 207);

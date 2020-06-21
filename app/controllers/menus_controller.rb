@@ -15,7 +15,7 @@ class MenusController < ApplicationController
 
   def show
     @menu = Menu.find(params[:id])
-    @order_id = session[:current_order_id]
+    @order_id = session_current_order_id
   end
 
   def edit
