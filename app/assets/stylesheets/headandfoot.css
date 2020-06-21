@@ -45,10 +45,14 @@ body {
   color: rgb(37, 39, 39);
 }
 
+.main-content {
+  min-height: calc(100vh - 373px);
+}
+
 .admin-header-content {
   display: flex;
   justify-content: space-evenly;
-  margin: 30px;
+  padding: 30px;
 }
 
 .admin-walkin-description {
@@ -108,11 +112,4 @@ body {
 .contact-info {
   padding: 5px;
   margin-left: 50px;
-}
-
-.about-me {
-  margin: 300px 50px;
-  font-size: 70px;
-  text-align: center;
-  color: rgb(38, 187, 207);
 }

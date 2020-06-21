@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cafeteria</title>
+    <title>Cool Cafeteria</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -17,9 +17,9 @@
       <%if @current_user%>
         <%= form_with(url: signout_path, method: "delete", class: "additional-header-content") do %>
           <p class="header-username">
-             <%= @current_user.name if @current_user.role=="customer"%>
-             <%= "Biller: #{@current_user.name}" if @current_user.role=="clerk"%>
-             <%= "Owner: #{@current_user.name}" if @current_user.role=="admin"%>
+            <%= @current_user.name if @current_user.role=="customer"%>
+            <%= "Biller: #{@current_user.name}" if @current_user.role=="clerk"%>
+            <%= "Owner: #{@current_user.name}" if @current_user.role=="admin"%>
           </p>
           <%= yield :signed_in_header %>
           <%= submit_tag "Sign Out", data: {disable_with: "Pleasure Serving You...!"}, class: "header-signout-button" %>
@@ -27,25 +27,29 @@
       <%end%>
     </header>
 
-    <%if @current_user%>
-      <% if @current_user.role== "admin" || @current_user.role=="clerk" %>
-        <div class="admin-header-content">
-          <%= yield :admin_header %>
-        </div>
-      <% end %>
-    <%end%>
+    <main class="main-content">
 
-    <% if @original_user%>
-      <%= form_with(url: original_role_path, method: "post", class: "admin-header-content") do %>
-        <p class="admin-walkin-description">
-          <%= "Biller: #{@original_user.name} is now Walk-in Customer..." if @original_user.role=="clerk" %>
-          <%= "Owner: #{@original_user.name} is now Walk-in Customer..." if @original_user.role=="admin" %>
-        </p>
-        <%= submit_tag "Back to Home", data: {disable_with: "Homecoming..."}, class:"admin-navigation-button" %>
+      <%if @current_user%>
+        <% if @current_user.role== "admin" || @current_user.role=="clerk" %>
+          <div class="admin-header-content">
+            <%= yield :admin_header %>
+          </div>
+        <% end %>
       <%end%>
-    <%end%>
 
-    <%= yield %>
+      <% if @original_user%>
+        <%= form_with(url: original_role_path, method: "post", class: "admin-header-content") do %>
+          <p class="admin-walkin-description">
+            <%= "Biller: #{@original_user.name} is now Walk-in Customer..." if @original_user.role=="clerk" %>
+            <%= "Owner: #{@original_user.name} is now Walk-in Customer..." if @original_user.role=="admin" %>
+          </p>
+          <%= submit_tag "Back to Home", data: {disable_with: "Homecoming..."}, class:"admin-navigation-button" %>
+        <%end%>
+      <%end%>
+
+      <%= yield %>
+
+    </main>
 
     <footer class="footer">
 

@@ -11,15 +11,16 @@ class AdminsController < ApplicationController
 
   def stats
     @invoices = Order.where("placed_at >= ? and placed_at <= ?", DateTime.now.beginning_of_day, DateTime.now.end_of_day)
-    date_filter_applied = false
-    username_filter_applied = false
     if params[:from_date].to_s.length > 0 && params[:to_date].to_s.length > 0
       @invoices = Order.where("placed_at >= ? and placed_at <= ?", params[:from_date].to_time.beginning_of_day, params[:to_date].to_time.end_of_day)
       date_filter_applied = true
       if (params[:username].to_s.strip.length > 0 && params[:username] != "All")
-        user_id = User.find_by(name: params[:username]).id
-        @invoices = @invoices.where(user_id: user_id)
-        username_filter_applied = true
+        if user = User.find_by(name: params[:username])
+          @invoices = @invoices.where(user_id: user.id)
+          username_filter_applied = true
+        else
+          flash.now[:error] = "Username \"#{params[:username]}\" doesn't exist"
+        end
       end
     end
     @from_date = Date.today
@@ -31,9 +32,9 @@ class AdminsController < ApplicationController
   end
 
   def role_change
-    if User.find(session[:current_user_id]).role == "clerk" || User.find(session[:current_user_id]).role == "admin"
+    if User.find(@current_user.id).role == "clerk" || User.find(@current_user.id).role == "admin"
       session[:original_order_id] = session[:current_order_id]
-      session[:original_user_id] = session[:current_user_id]
+      session[:original_user_id] = @current_user.id
       session[:current_order_id] = session[:walkin_order_id]
       session[:current_user_id] = Order.find(session[:current_order_id]).user.id
       session[:walkin_order_id] = nil
@@ -44,7 +45,7 @@ class AdminsController < ApplicationController
   def role_back
     if User.find(session[:original_user_id]).role == "clerk" || User.find(session[:original_user_id]).role == "admin"
       session[:walkin_order_id] = session[:current_order_id]
-      session[:current_user_id] = session[:original_user_id]
+      session[:current_user_id] = @original_user.id
       session[:current_order_id] = session[:original_order_id]
       session[:original_user_id] = nil
       session[:original_order_id] = nil

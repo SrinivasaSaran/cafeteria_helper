@@ -1,9 +1,9 @@
 .home-page {
-  margin: 170px 100px;
+  padding: 100px 0px 0px 100px;
 }
 
 .signup-page {
-  margin: 100px auto;
+  margin: 50px auto;
   max-width: 600px;
 }
 
@@ -42,4 +42,11 @@
   font-size: 18px;
   color: red;
   margin-bottom: 30px;
+}
+
+.about-me {
+  padding: 300px 0px;
+  font-size: 50px;
+  text-align: center;
+  color: rgb(38, 187, 207);
 }

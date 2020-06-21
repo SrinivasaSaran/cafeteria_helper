@@ -378,6 +378,12 @@
   border: 1px solid rgb(240, 24, 186);
 }
 
+.flasherror-stat-username {
+  color: red;
+  text-align: center;
+  font-size: 22px;
+}
+
 .stats-title {
   font-size: 38px;
   text-align: center;

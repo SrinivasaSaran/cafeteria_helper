@@ -16,6 +16,7 @@
     <%= text_field_tag :username, @username, placeholder: "Name of User to fetch Reports", class: "stats-filter-input" %>
     <%= submit_tag "Apply Filter", data: {disable_with: "Fetching..."}, class: "stats-filter-button" %>
   <%end%>
+  <h4 class="flasherror-stat-username"><%= flash[:error] %><h4>
 
   <h3 class="stats-title">Invoices</h3>
 
