@@ -27,14 +27,14 @@ class OrdersController < ApplicationController
   def cart
     if item = OrderItem.exist?(@current_user.id, session_current_order_id, params[:menu_item_id])
       updated_quantity = item.quantity + params[:quantity].to_i
-      if updated_quantity > 7
-        flash[:error] = "You can add only 7 quantities per item..!"
+      if updated_quantity > 50
+        flash[:error] = "You can add only 50 quantities per item..!"
       else
         item.update!(quantity: updated_quantity, price: updated_quantity * params[:menu_item_price].to_f)
       end
     else
-      if params[:quantity].to_i > 7
-        flash[:error] = "You can add only 7 quantities per item..!"
+      if params[:quantity].to_i > 50
+        flash[:error] = "You can add only 50 quantities per item..!"
       else
         OrderItem.create!(
           order_id: session[:current_order_id],

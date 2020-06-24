@@ -12,6 +12,7 @@
 }
 
 .menuitems-title {
+  display: flex;
   font-size: 30px;
   margin: 30px auto;
   margin-left: 10px;
@@ -28,11 +29,11 @@
   font-size: 30px;
   text-align: center;
   padding: 50px 10px;
-  background-color: rgb(220, 217, 20);
+  background-color: rgb(214, 211, 40);
   color: white;
   margin: auto 30px;
   margin-bottom: 60px;
-  text-decoration: underline rgb(220, 217, 20);
+  text-decoration: underline rgb(214, 211, 40);
 }
 
 .menus-grid-item:hover {

@@ -18,7 +18,10 @@
     </a>
   <%end%>
 
-  <h1 class="menuitems-title"><%=@menu.name%> Menu</h1>
+  <h1 class="menuitems-title">
+    <p><%= "#{@menu.name} Menu"%></p>
+    <p><%= image_tag("down-arrow.png", class: "menu-change-icon") %></p>
+  </h1>
   <p class="flash-error-itemquantity"><%= flash[:error] %></p>
 
   <section class="menuitems-grid-container">
@@ -58,6 +61,7 @@
                     alt:"-",
                     height: "16px",
                     width: "16px",
+                    title: "Remove Item from Cart",
                     class:"cart-removeicon") %>
         <%end%>
 
@@ -87,7 +91,7 @@
 
         <span class="menuitem-price">
           <p>Rs.<%= menu_item.price %></p>
-          <p>Quantity:  <%= number_field_tag "quantity", 1, in: 1..7, class: "menuitem-quantity" %></p>
+          <p>Quantity:  <%= number_field_tag "quantity", 1, in: 1..50, class: "menuitem-quantity" %></p>
         </span>
 
         <%= hidden_field_tag :menu_item_price, menu_item.price %>

@@ -36,7 +36,7 @@
             <%= "#{invoice.user.name} (Admin)" if role=="admin"%>
           </p>
           <p>Total: Rs.<%= invoice.total_amount %></p>
-          <%= image_submit_tag "right-arrow.png", title: "Click to view Full Detail" %>
+          <%= image_submit_tag "right-arrow.png", title: "Click to view Full Detail", class: "stat-getinvoicedetails" %>
         <%end%>
       <%}%>
     <%end%>

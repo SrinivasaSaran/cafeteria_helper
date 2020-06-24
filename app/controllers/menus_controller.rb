@@ -14,8 +14,13 @@ class MenusController < ApplicationController
   end
 
   def show
-    @menu = Menu.find(params[:id])
-    @order_id = session_current_order_id
+    menu = Menu.find(params[:id])
+    if menu.active_status
+      @menu = menu
+      @order_id = session_current_order_id
+    else
+      redirect_to menus_path
+    end
   end
 
   def edit

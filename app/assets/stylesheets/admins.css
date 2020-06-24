@@ -23,6 +23,11 @@
   border-radius: 7px;
 }
 
+.addmenu-button:hover {
+  border: 1px solid rgb(173, 46, 236);
+  background-color: rgb(173, 46, 236);
+}
+
 .managemenus-flash-error {
   font-size: 20px;
   text-align: center;
@@ -55,6 +60,11 @@
   padding: 10px 20px;
   font-size: 18px;
   border-radius: 6px;
+}
+
+.update-menuname-button:hover {
+  border: 1px solid rgb(230, 34, 213);
+  background-color: rgb(230, 34, 213);
 }
 
 .flash-updatemenuname-success {
@@ -147,6 +157,11 @@
   padding: 7px 20px;
 }
 
+.addmenuitem-button:hover {
+  border: 1px solid rgb(173, 46, 236);
+  background-color: rgb(173, 46, 236);
+}
+
 .flasherror-addmenuitem {
   font-size: 22px;
   color: red;
@@ -176,6 +191,11 @@
   background-color: rgb(212, 11, 196);
   color: white;
   border-radius: 5px;
+}
+
+.update-menuitem-button:hover {
+  border: 1px solid rgb(230, 34, 213);
+  background-color: rgb(230, 34, 213);
 }
 
 .menuitem-section:hover {
@@ -241,6 +261,11 @@
   padding: 10px 25px;
   color: white;
   font-size: 18px;
+}
+
+.make-biller-button:hover {
+  border: 1px solid rgb(187, 64, 187);
+  background-color: rgb(187, 64, 187);
 }
 
 .flash-nouser {
@@ -410,4 +435,8 @@
 
 .stat-invoice:hover {
   background-color: rgba(67, 219, 143, 0.644);
+}
+
+.stat-getinvoicedetails:hover {
+  background-color: rgba(246, 248, 242, 0.884);
 }
