@@ -19,8 +19,8 @@
   <%end%>
 
   <h1 class="menuitems-title">
-    <p><%= "#{@menu.name} Menu"%></p>
-    <p><%= image_tag("down-arrow.png", class: "menu-change-icon") %></p>
+    <%= "#{@menu.name} Menu"%>
+    <%= image_tag("down-arrow.png", class: "menu-change-icon") %>
   </h1>
   <p class="flash-error-itemquantity"><%= flash[:error] %></p>
 

@@ -18,10 +18,6 @@
     <%= submit_tag "Users", class:"admin-navigation-button" if !(current_page_name == "Users") %>
     <%= submit_tag "Users", class:"present-admin-navigation-button" if current_page_name == "Users" %>
   </a>
-  <a href="/">
-    <%= submit_tag "All Invoices", class:"admin-navigation-button" if !(current_page_name == "All Invoices") %>
-    <%= submit_tag "All Invoices", class:"present-admin-navigation-button" if current_page_name == "All Invoices" %>
-  </a>
   <a href="/admins/menus">
     <%= submit_tag "Manage Menus", class:"admin-navigation-button" if !(current_page_name == "Manage Menus") %>
     <%= submit_tag "Manage Menus", class:"present-admin-navigation-button" if current_page_name == "Manage Menus" %>
