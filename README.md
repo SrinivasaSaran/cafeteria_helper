@@ -1,24 +1,20 @@
-# README
+My 1st Independently developed management SAAS for Single branched restaurant. It is developed for use of 3 personas namely Customer, Biller and Admin.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Features:
+Customers can view menus, place orders, and track the status of orders. 
+Billers and Admin can view all pending orders and can mark them as delivered. 
+Admin can also manage menus, manage users and view reports. 
 
-Things you may want to cover:
+Link to the Website : http://coffee-tea-area.herokuapp.com/
 
-* Ruby version
+Login Credentials,
 
-* System dependencies
+BillerMail: peter@spider.mcu
+Password: spiderman
 
-* Configuration
+AdminMail: richparker@tiger.pi
+Password: bengaltiger
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+(If u dont wish to signup as customer,)
+CustomerMail: vilgax@ben10.cartoon
+Password: omnitrix
